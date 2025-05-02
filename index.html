@@ -1,1 +1,341 @@
-ыуваыуа
+<!-- Cosmic Invaders — Hyper Plus Edition (UX/UI + Gamification Overhaul) -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmic Invaders — Hyper Plus Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    /*─────────────────────────────────────────────────*/
+    /*  COLOR PALETTE  */
+    :root {
+      --bg0:#02040c; --bg1:#0c1122; --bg2:#1b2244;
+      --txt:#e2e8f0; --glow:#ffffff6a;
+      --ship:#3b82f6; --shipGlow:#93c5fd;
+      --inv1:#facc15; --inv2:#fb923c; --boss:#c084fc;
+      --bullet:#f43f5e; --ebullet:#fb7185;
+      --laser:#34d399; --capsule:#4ade80; --coin:#fcd34d;
+      --hud:#a1a1aa; --shield:#60a5fa;
+      --toast:#fef9c3;
+    }
+    /*─────────────────────────────────────────────────*/
+    /*  RESET  */
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;background:var(--bg0);color:var(--txt);font-family:'Press Start 2P',monospace;-webkit-user-select:none;user-select:none;overflow:hidden;}
+    button{font-family:'Press Start 2P',monospace;}
+    /*─────────────────────────────────────────────────*/
+    /*  STARFIELD (triple‑layer parallax)  */
+    #space{position:fixed;inset:0;z-index:-3;pointer-events:none}
+    canvas{position:absolute;width:100%;height:100%;}
+    /*─────────────────────────────────────────────────*/
+    /*  HUD  */
+    #hud{position:absolute;top:8px;left:50%;transform:translateX(-50%);text-align:center;font-size:10px;line-height:1.3;color:var(--hud);pointer-events:none;text-shadow:0 0 4px var(--glow)}
+    #lives{margin-top:4px;letter-spacing:2px}
+    #coins{margin-top:4px;font-size:10px;color:var(--coin)}
+    .bar{position:absolute;left:50%;transform:translateX(-50%);height:6px;width:220px;border:1px solid var(--laser);z-index:2;pointer-events:none}
+    .bar>div{height:100%;width:100%;background:var(--laser)}
+    #bossHP{bottom:42px;border-color:var(--boss)} #bossHP>div{background:var(--boss)}
+    #laserCD{bottom:30px}
+    #xpBar{bottom:18px;border-color:var(--capsule)} #xpBar>div{background:var(--capsule)}
+    #fps{position:absolute;bottom:6px;left:6px;font-size:8px;color:var(--hud)}
+    /*─────────────────────────────────────────────────*/
+    /*  UI Buttons  */
+    .ui{position:absolute;z-index:4;font-size:12px;padding:6px 12px;background:var(--bg1);color:var(--txt);border:2px solid var(--txt);cursor:pointer;transition:filter .2s}
+    .ui:hover{filter:brightness(1.2)}
+    #soundBtn{top:10px;right:10px}
+    #fsBtn{bottom:10px;right:10px}
+    #themeBtn{bottom:10px;left:10px}
+    #achBtn{top:10px;left:10px}
+    #shopBtn{top:42px;left:10px}
+    /*─────────────────────────────────────────────────*/
+    /*  OVERLAYS  */
+    .overlay{position:absolute;inset:0;background:rgba(0,0,0,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;z-index:5}
+    .overlay.hidden{display:none}
+    .overlay h1{font-size:26px;text-shadow:0 0 8px var(--inv1);color:var(--inv1)}
+    .overlay p{font-size:9px;opacity:.85;text-align:center;max-width:90vw}
+    .overlay button{padding:10px 26px;font-size:14px;background:var(--ship);border:none;border-radius:10px;color:#fff;cursor:pointer;box-shadow:0 4px 12px -2px var(--ship);transition:transform .2s}
+    .overlay button:hover{transform:translateY(-2px)}
+    ol{list-style:none;padding:0;text-align:center}
+    ol li{margin:4px 0;font-size:12px}
+    /*─────────────────────────────────────────────────*/
+    /*  TOASTS  */
+    #toasts{position:fixed;bottom:10px;right:10px;display:flex;flex-direction:column;gap:6px;z-index:6}
+    .toast{background:var(--toast);color:#2e1065;padding:6px 10px;font-size:10px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.4);animation:slideIn .4s,fadeOut 4s 2s forwards}
+    @keyframes slideIn{from{transform:translateX(120%);}to{transform:translateX(0);}}
+    @keyframes fadeOut{to{opacity:0;}}
+    /*─────────────────────────────────────────────────*/
+    /*  SVG FIELD  */
+    svg#game{display:block;width:100%;height:100%;filter:drop-shadow(0 0 6px var(--glow));position:relative;z-index:0}
+    .pulse{animation:pulse 1.2s ease-in-out infinite alternate}
+    @keyframes pulse{0%{filter:drop-shadow(0 0 4px var(--shipGlow))}100%{filter:drop-shadow(0 0 10px var(--shipGlow))}}
+    .spin{animation:spin 3s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .boom{animation:explode .5s forwards}@keyframes explode{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(3)}}
+    /*─────────────────────────────────────────────────*/
+    /*  SHOP LIST  */
+    #shopGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px;max-width:90vw}
+    .item{background:var(--bg2);padding:12px;border:2px solid var(--txt);border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+    .item button{padding:6px 14px;font-size:12px;background:var(--coin);color:#1e293b;border:none;border-radius:6px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+    /*─────────────────────────────────────────────────*/
+    /*  Mobile controls (optional)  */
+    @media(max-width:640px){#hud{font-size:8px;} .ui{font-size:10px;padding:4px 8px}}
+    /*─────────────────────────────────────────────────*/
+  </style>
+</head>
+<body>
+  <!--  PARALLAX BACKGROUND  -->
+  <div id="space"><canvas id="stars1"></canvas><canvas id="stars2"></canvas><canvas id="stars3"></canvas></div>
+
+  <!--  UI BUTTONS  -->
+  <button id="achBtn"  class="ui" title="Достижения">🏆</button>
+  <button id="shopBtn" class="ui" title="Магазин">🛸</button>
+  <button id="soundBtn" class="ui">🔊</button>
+  <button id="fsBtn"    class="ui">⛶</button>
+  <button id="themeBtn" class="ui">☀️</button>
+
+  <!--  HUD  -->
+  <div id="hud">
+    <div id="score">SCORE 00000</div>
+    <div id="level">LEVEL 01</div>
+    <div id="lives">❤❤❤</div>
+    <div id="coins">⭑000</div>
+    <div id="high">BEST 00000</div>
+  </div>
+  <div id="laserCD" class="bar"><div></div></div>
+  <div id="bossHP"  class="bar hidden"><div></div></div>
+  <div id="xpBar"   class="bar"><div></div></div>
+  <div id="fps"></div>
+
+  <!--  MENU OVERLAY  -->
+  <div id="menu" class="overlay">
+    <h1>COSMIC INVADERS</h1>
+    <p>MOVE ← → ◆ SHOOT SPACE/ENTER ◆ LASER L ◆ PAUSE P ◆ BOARD B</p>
+    <button id="startBtn">START</button>
+  </div>
+
+  <!--  LEADERBOARD OVERLAY  -->
+  <div id="boardOv" class="overlay hidden">
+    <h1>LEADERBOARD</h1>
+    <ol id="board"></ol>
+    <button id="closeBoard">CLOSE</button>
+  </div>
+
+  <!--  ACHIEVEMENTS OVERLAY  -->
+  <div id="achOv" class="overlay hidden">
+    <h1>ACHIEVEMENTS</h1>
+    <ol id="achList"></ol>
+    <button id="closeAch">CLOSE</button>
+  </div>
+
+  <!--  SHOP OVERLAY  -->
+  <div id="shopOv" class="overlay hidden">
+    <h1>SPACE SHOP</h1>
+    <p>Spend your coins on ship cosmetics (visual only)</p>
+    <div id="shopGrid"></div>
+    <button id="closeShop">CLOSE</button>
+  </div>
+
+  <!--  GAME SVG  -->
+  <svg id="game" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <!--  GRADIENTS  -->
+      <linearGradient id="g-ship" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#bfe1ff"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+      <linearGradient id="g-ship-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fecaca"/><stop offset="100%" stop-color="#ef4444"/></linearGradient>
+      <linearGradient id="g-ship-green" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#bbf7d0"/><stop offset="100%" stop-color="#22c55e"/></linearGradient>
+      <linearGradient id="g-boss" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e9d5ff"/><stop offset="100%" stop-color="#c084fc"/></linearGradient>
+      <!--  SHIP  -->
+      <symbol id="ship" viewBox="0 0 14 14">
+        <path d="M7 0 h0" fill="url(#g-ship)"/>
+        <rect x="6" y="0" width="2" height="2" fill="url(#g-ship)"/>
+        <rect x="5" y="2" width="4" height="2" fill="url(#g-ship)"/>
+        <rect x="4" y="4" width="6" height="2" fill="url(#g-ship)"/>
+        <rect x="3" y="6" width="8" height="2" fill="url(#g-ship)"/>
+        <rect x="1" y="8" width="12" height="2" fill="url(#g-ship)"/>
+        <rect x="6" y="10" width="2" height="2" fill="url(#g-ship)"/>
+      </symbol>
+      <!--  INVADERS  -->
+      <symbol id="inv1" viewBox="0 0 8 8"><rect x="2" width="4" height="1" fill="var(--inv1)"/><rect x="1" y="1" width="6" height="1" fill="var(--inv1)"/><rect y="2" width="8" height="1" fill="var(--inv1)"/><rect x="1" y="3" width="1" height="1" fill="var(--bg1)"/><rect x="6" y="3" width="1" height="1" fill="var(--bg1)"/><rect y="4" width="8" height="1" fill="var(--inv1)"/><rect x="1" y="5" width="6" height="1" fill="var(--inv1)"/><rect x="1" y="6" width="2" height="1" fill="var(--inv1)"/><rect x="5" y="6" width="2" height="1" fill="var(--inv1)"/></symbol>
+      <symbol id="inv2" viewBox="0 0 8 8"><use href="#inv1" fill="var(--inv2)"/></symbol>
+      <!--  BOSS  -->
+      <symbol id="boss" viewBox="0 0 28 16">
+        <rect width="28" height="4" fill="url(#g-boss)"/>
+        <rect width="24" height="2" x="2" y="4" fill="url(#g-boss)"/>
+        <rect width="20" height="2" x="4" y="6" fill="url(#g-boss)"/>
+        <rect width="16" height="2" x="6" y="8" fill="url(#g-boss)"/>
+        <rect width="12" height="2" x="8" y="10" fill="url(#g-boss)"/>
+      </symbol>
+      <!--  PROJECTILES  -->
+      <symbol id="plyBullet" viewBox="0 0 2 6"><rect width="2" height="6" fill="var(--bullet)"/></symbol>
+      <symbol id="eneBullet" viewBox="0 0 2 6"><rect width="2" height="6" fill="var(--ebullet)"/></symbol>
+      <symbol id="laser" viewBox="0 0 4 40"><rect width="4" height="40" fill="var(--laser)"/></symbol>
+      <!--  CAPSULES  -->
+      <symbol id="capsule" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="var(--capsule)"/></symbol>
+      <symbol id="coinCap" viewBox="0 0 6 6"><circle cx="3" cy="3" r="3" fill="var(--coin)"/></symbol>
+    </defs>
+  </svg>
+
+  <!--  AUDIO  -->
+  <audio id="bgm" loop preload="auto" src="https://cdn.jsdelivr.net/gh/matankoren/gamingsfx/space%20loop.mp3"></audio>
+  <audio id="coinSfx" preload="auto" src="https://cdn.jsdelivr.net/gh/matankoren/gamingsfx/coin.mp3"></audio>
+  <audio id="achSfx"  preload="auto" src="https://cdn.jsdelivr.net/gh/matankoren/gamingsfx/achievement.mp3"></audio>
+
+  <div id="toasts"></div>
+
+  <script>
+  /*─────────────────────────────────────────────────*/
+  /*  Hyper Plus Add‑Ons Overview
+      – XP / Player Level system & bar
+      – Coins drop + persistent currency
+      – Cosmetic shop with 3 ship skins
+      – Achievements (5 to start) + toast notifications
+      – Third parallax star‑layer for extra depth
+      – Toast UI component
+  */
+  (()=>{
+    const $=id=>document.getElementById(id);const svgNS="http://www.w3.org/2000/svg";
+    /*──────────────────────── DOM  */
+    const menu=$('menu'),startBtn=$('startBtn');
+    const boardOv=$('boardOv'),board=$('board'),closeBoard=$('closeBoard');
+    const achOv=$('achOv'),achList=$('achList'),closeAch=$('closeAch');
+    const shopOv=$('shopOv'),shopGrid=$('shopGrid'),closeShop=$('closeShop');
+    const hud={score:$('score'),level:$('level'),high:$('high'),lives:$('lives'),coins:$('coins')};
+    const laserBar=$('laserCD').firstElementChild,bossBar=$('bossHP'),bossFill=bossBar.firstElementChild,xpFill=$('xpBar').firstElementChild,fpsEl=$('fps');
+    const soundBtn=$('soundBtn'),fsBtn=$('fsBtn'),themeBtn=$('themeBtn'),achBtn=$('achBtn'),shopBtn=$('shopBtn');
+    const game=$('game');
+    const coinSfx=$('coinSfx'),achSfx=$('achSfx');
+    /*──────────────────────── STATE */
+    const W=600,H=800,SHIP_Y=H-90,INV_W=40,INV_H=40,INV_PAD=20,LASER_CD=6000;
+    let ship,invaders=[],boss=null,bullets=[],lasers=[],eBullets=[],capsules=[];
+    let keys={},dir=1,frame=0,score=0,levelGame=1,lives=3,high=+localStorage.ci_high||0;
+    let laserReady=true,power=false,powerEnd=0,playing=false,paused=false;
+    let highs=JSON.parse(localStorage.ci_board||'[]');
+    // Gamification
+    let coins=+localStorage.ci_coins||0;
+    let xp=+localStorage.ci_xp||0,playerLvl=+localStorage.ci_plvl||1,xpMax=100;
+    const shopItems=[
+      {id:'default',name:'Standard',gradient:'url(#g-ship)',cost:0},
+      {id:'red',name:'Crimson Fury',gradient:'url(#g-ship-red)',cost:200},
+      {id:'green',name:'Emerald Flash',gradient:'url(#g-ship-green)',cost:350},
+    ];
+    let currentSkin=localStorage.ci_skin||'default';
+    const achievements=[
+      {id:'firstKill', title:'First Blood', unlocked:false, cond:()=>score>=10},
+      {id:'coin100',  title:'Miner I', unlocked:false, cond:()=>coins>=100},
+      {id:'level5',   title:'Pilot Lv 5', unlocked:false, cond:()=>playerLvl>=5},
+      {id:'score1k',  title:'1,000 Points', unlocked:false, cond:()=>score>=1000},
+      {id:'flawless', title:'Flawless Stage', unlocked:false, cond:()=>levelGame>1&&lives===3},
+    ];
+    const unlockedSet=new Set(JSON.parse(localStorage.ci_ach||'[]'));
+    achievements.forEach(a=>a.unlocked=unlockedSet.has(a.id));
+    /*──────────────────────── UTIL */
+    const make=(id,w,h,cls)=>{const u=document.createElementNS(svgNS,'use');u.setAttribute('href','#'+id);u.setAttribute('width',w);u.setAttribute('height',h);if(cls)u.classList.add(cls);return u;};
+    const ui=()=>{
+      hud.score.textContent='SCORE '+String(score).padStart(5,'0');
+      hud.level.textContent='LEVEL '+String(levelGame).padStart(2,'0');
+      hud.high.textContent='BEST '+String(high).padStart(5,'0');
+      hud.lives.textContent='❤'.repeat(lives);
+      hud.coins.textContent='⭑'+String(coins).padStart(3,'0');
+      xpFill.style.width=(xp/xpMax*100)+'%';
+    };
+    const boom=(x,y,r=8)=>{const e=document.createElementNS(svgNS,'circle');e.setAttribute('cx',x);e.setAttribute('cy',y);e.setAttribute('r',r);e.setAttribute('fill','var(--bullet)');e.classList.add('boom');game.appendChild(e);setTimeout(()=>game.contains(e)&&game.removeChild(e),450);} ;
+    const resetField=()=>{const defs=game.querySelector('defs').outerHTML;game.innerHTML=defs;};
+    const showToast=msg=>{const t=document.createElement('div');t.className='toast';t.textContent=msg;$('toasts').appendChild(t);setTimeout(()=>t.remove(),3800);} ;
+    const unlockAch=a=>{if(a.unlocked)return; a.unlocked=true; unlockedSet.add(a.id); localStorage.ci_ach=JSON.stringify([...unlockedSet]); showToast('🏆 '+a.title); achSfx.currentTime=0; achSfx.play(); refreshAchList();};
+    const refreshAchList=()=>{achList.innerHTML=achievements.map(a=>`<li>${a.unlocked?'✅':'⬜'} ${a.title}</li>`).join('');};
+    const refreshShop=()=>{
+      shopGrid.innerHTML='';
+      shopItems.forEach(item=>{
+        const div=document.createElement('div');div.className='item';
+        const svg=document.createElementNS(svgNS,'svg');svg.setAttribute('viewBox','0 0 14 14');svg.setAttribute('width','60');svg.setAttribute('height','60');svg.innerHTML=`<use href='#ship' fill='${item.gradient}'/>`;
+        const h=document.createElement('div');h.textContent=item.name;h.style.fontSize='10px';
+        const btn=document.createElement('button');btn.textContent=item.id===currentSkin?'EQUIPPED':item.cost+' ⭑';btn.disabled=item.id===currentSkin||coins<item.cost;
+        btn.onclick=()=>{coins-=item.cost;currentSkin=item.id;localStorage.ci_skin=currentSkin;localStorage.ci_coins=coins;applySkin();refreshShop();ui();showToast('🎨 Skin applied');};
+        div.appendChild(svg);div.appendChild(h);div.appendChild(btn);shopGrid.appendChild(div);
+      });
+    };
+    const applySkin=()=>{
+      const grad=shopItems.find(i=>i.id===currentSkin).gradient;
+      const shipPaths=game.querySelectorAll('#ship rect, #ship path');
+      shipPaths.forEach(p=>p.setAttribute('fill',grad));
+    };
+    /*──────────────────────── SPAWN */
+    const spawnShip=()=>{ship=make('ship',64,64,'pulse');applySkin();game.appendChild(ship);ship.setAttribute('x',W/2-32);ship.setAttribute('y',SHIP_Y);} ;
+    const spawnInvaders=()=>{invaders=[];boss=null;const rows=4+Math.floor(levelGame/2),cols=8;const offX=(W-(cols*INV_W+(cols-1)*INV_PAD))/2;for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const id=(r+c)%2?'inv1':'inv2';const inv=make(id,INV_W,INV_H);inv.setAttribute('x',offX+c*(INV_W+INV_PAD));inv.setAttribute('y',120+r*(INV_H+INV_PAD));game.appendChild(inv);invaders.push(inv);}if(levelGame%5===0){boss=make('boss',140,80,'pulse');boss.dataset.hp=24;boss.setAttribute('x',W/2-70);boss.setAttribute('y',60);game.appendChild(boss);bossBar.classList.remove('hidden');bossFill.style.width='100%';}else bossBar.classList.add('hidden');};
+    const spawnCapsule=(type,x,y)=>{const id=type==='coin'?'coinCap':'capsule';const c=make(id,28,28,'spin');c.dataset.type=type; c.setAttribute('x',x);c.setAttribute('y',y);game.appendChild(c);capsules.push(c);} ;
+    /*──────────────────────── SHOOT */
+    const fire=()=>{if(power)[-18,0,18].forEach(dx=>bullet(dx));else bullet(0);} ;
+    const bullet=dx=>{const b=make('plyBullet',8,24);const x=parseFloat(ship.getAttribute('x'))+28+dx;b.setAttribute('x',x);b.setAttribute('y',SHIP_Y-20);game.appendChild(b);bullets.push(b);} ;
+    const laser=()=>{if(!laserReady)return;laserReady=false;const l=make('laser',8,H,'pulse');l.setAttribute('x',parseFloat(ship.getAttribute('x'))+28);l.setAttribute('y',0);game.appendChild(l);lasers.push(l);setTimeout(()=>{game.contains(l)&&game.removeChild(l);lasers.splice(lasers.indexOf(l),1);},350);setTimeout(()=>laserReady=true,LASER_CD);} ;
+    const enemyShoot=()=>{const shooters=[...invaders];if(boss)shooters.push(boss);if(!shooters.length)return;const s=shooters[Math.floor(Math.random()*shooters.length)];const b=make('eneBullet',8,24);b.setAttribute('x',parseFloat(s.getAttribute('x'))+INV_W/2);b.setAttribute('y',parseFloat(s.getAttribute('y'))+INV_H);game.appendChild(b);eBullets.push(b);} ;
+    /*──────────────────────── GAME FLOW */
+    const resetGame=()=>{resetField();score=0;levelGame=1;lives=3;dir=1;laserReady=true;power=false;ui();spawnShip();spawnInvaders();};
+    const endGame=win=>{playing=false;high=Math.max(high,score);localStorage.ci_high=high;highs.push(score);highs.sort((a,b)=>b-a);localStorage.ci_board=JSON.stringify(highs.slice(0,10));ui();menu.querySelector('h1').textContent=win?'VICTORY!':'GAME OVER';menu.querySelector('p').textContent='SCORE '+score;menu.classList.remove('hidden');};
+    /*──────────────────────── UTIL FUNCS */
+    const hit=(el,x,y,w,h)=>{const ex=parseFloat(el.getAttribute('x')),ey=parseFloat(el.getAttribute('y')),ew=parseFloat(el.getAttribute('width')),eh=parseFloat(el.getAttribute('height'));return ex<x+w&&ex+ew>x&&ey<y+h&&ey+eh>y;};
+    const screenshake=()=>{document.body.style.transform='translate('+((Math.random()-0.5)*8)+'px,'+((Math.random()-0.5)*8)+'px)';setTimeout(()=>document.body.style.transform='',60);} ;
+    const checkAchievements=()=>{achievements.forEach(a=>{if(!a.unlocked&&a.cond())unlockAch(a);});};
+    /*──────────────────────── LOOP */
+    let lastFrame=performance.now();
+    const loop=()=>{
+      if(!playing||paused)return;
+      const now=performance.now();frame++;const dt=now-lastFrame;lastFrame=now;fpsEl.textContent=Math.round(1000/dt)+' fps';
+      // Parallax stars
+      drawStars(ctx1,stars1,1.4);drawStars(ctx2,stars2,0.8);drawStars(ctx3,stars3,0.4);
+      // Move ship
+      let sx=parseFloat(ship.getAttribute('x'));if(keys.ArrowLeft)sx-=8;if(keys.ArrowRight)sx+=8;sx=Math.max(0,Math.min(W-64,sx));ship.setAttribute('x',sx);
+      // Thruster particles
+      if(frame%3===0){const p=document.createElementNS(svgNS,'rect');p.setAttribute('x',sx+30);p.setAttribute('y',SHIP_Y+66);p.setAttribute('width',4);p.setAttribute('height',4);p.setAttribute('fill','var(--shipGlow)');p.setAttribute('opacity',0.8);game.appendChild(p);setTimeout(()=>game.contains(p)&&game.removeChild(p),300);} ;
+      // Laser cooldown bar
+      const cdRatio=laserReady?1:(LASER_CD-(now%LASER_CD))/LASER_CD;laserBar.style.width=(cdRatio*100)+'%';
+      // Bullets move
+      bullets.forEach((b,i)=>{const y=parseFloat(b.getAttribute('y'))-12;b.setAttribute('y',y);if(y<0){game.removeChild(b);bullets.splice(i,1);} });
+      eBullets.forEach((b,i)=>{const y=parseFloat(b.getAttribute('y'))+9;b.setAttribute('y',y);if(y>H){game.removeChild(b);eBullets.splice(i,1);} });
+      capsules.forEach((c,i)=>{const y=parseFloat(c.getAttribute('y'))+4;c.setAttribute('y',y);if(y>H){game.removeChild(c);capsules.splice(i,1);} });
+      // Collisions bullets vs invaders/boss
+      bullets.forEach((b,bi)=>{
+        invaders.forEach((inv,ii)=>{if(hit(b,parseFloat(inv.getAttribute('x')),parseFloat(inv.getAttribute('y')),INV_W,INV_H)){boom(parseFloat(inv.getAttribute('x'))+20,parseFloat(inv.getAttribute('y'))+20);screenshake();game.removeChild(inv);invaders.splice(ii,1);game.removeChild(b);bullets.splice(bi,1);score+=10;xp+=5;ui();checkAchievements();if(Math.random()<.05)spawnCapsule('coin',parseFloat(inv.getAttribute('x')),parseFloat(inv.getAttribute('y')));else if(Math.random()<.06)spawnCapsule('power',parseFloat(inv.getAttribute('x')),parseFloat(inv.getAttribute('y')));} });
+        if(boss&&hit(b,parseFloat(boss.getAttribute('x')),parseFloat(boss.getAttribute('y')),140,80)){boss.dataset.hp--;bossFill.style.width=(boss.dataset.hp/24*100)+'%';boom(parseFloat(b.getAttribute('x')),parseFloat(b.getAttribute('y')),6);screenshake();game.removeChild(b);bullets.splice(bi,1);if(boss.dataset.hp<=0){boom(parseFloat(boss.getAttribute('x'))+70,parseFloat(boss.getAttribute('y'))+40,14);screenshake();game.removeChild(boss);boss=null;score+=200;xp+=40;ui();checkAchievements();bossBar.classList.add('hidden');}} });
+      lasers.forEach(l=>{const lx=parseFloat(l.getAttribute('x'));invaders.forEach((inv,ii)=>{if(lx<parseFloat(inv.getAttribute('x'))+INV_W&&lx+4>parseFloat(inv.getAttribute('x'))){boom(parseFloat(inv.getAttribute('x'))+20,parseFloat(inv.getAttribute('y'))+20,8);game.removeChild(inv);invaders.splice(ii,1);score+=10;xp+=5;ui();checkAchievements();} });if(boss&&lx<parseFloat(boss.getAttribute('x'))+140&&lx+4>parseFloat(boss.getAttribute('x'))){boss.dataset.hp-=0.4;bossFill.style.width=(boss.dataset.hp/24*100)+'%';if(boss.dataset.hp<=0){boom(parseFloat(boss.getAttribute('x'))+70,parseFloat(boss.getAttribute('y'))+40,14);game.removeChild(boss);boss=null;score+=200;xp+=40;ui();checkAchievements();bossBar.classList.add('hidden');}} });
+      eBullets.forEach((b,ei)=>{if(hit(b,sx,SHIP_Y,64,64)){game.removeChild(b);eBullets.splice(ei,1);screenshake();lives--;ui();if(lives<=0)return endGame(false);} });
+      capsules.forEach((c,ci)=>{if(hit(c,sx,SHIP_Y,64,64)){game.removeChild(c);capsules.splice(ci,1);if(c.dataset.type==='power'){power=true;powerEnd=now+8000;showToast('⚡ Tri‑shot!');} else {const gain=10;coins+=gain;coinSfx.currentTime=0;coinSfx.play();showToast('⭑ +'+gain);checkAchievements();}
+      }});
+      if(power&&now>powerEnd)power=false;
+      // Invader movement & fire
+      if(frame%Math.max(6,18-levelGame)===0){let edge=false;invaders.forEach(inv=>{const x=parseFloat(inv.getAttribute('x'))+dir*(3+levelGame*0.4);inv.setAttribute('x',x);if(x<=0||x+INV_W>=W)edge=true;});if(edge){dir*=-1;invaders.forEach(inv=>inv.setAttribute('y',parseFloat(inv.getAttribute('y'))+22));}}
+      if(frame%50===0)enemyShoot();
+      // Boss bobbing
+      if(boss){const bx=parseFloat(boss.getAttribute('x'))+Math.sin(now/400)*1.2;boss.setAttribute('x',Math.max(0,Math.min(W-140,bx)));}
+      // XP / Level up
+      if(xp>=xpMax){xp-=xpMax;playerLvl++;xpMax=Math.round(xpMax*1.2);showToast('🚀 Level Up!');checkAchievements();}
+      // Next level
+      if(invaders.length===0&&!boss){levelGame++;spawnInvaders();ui();}
+      requestAnimationFrame(loop);
+    };
+    /*──────────────────────── INPUTS */
+    window.addEventListener('keydown',e=>{if(e.repeat)return;keys[e.code]=true;switch(e.code){case'Enter':case'Space':if(playing&&!paused)fire();break;case'KeyL':if(playing&&!paused)laser();break;case'KeyP':if(playing){paused=!paused;menu.classList.toggle('hidden',!paused);menu.querySelector('h1').textContent='PAUSED';if(!paused)requestAnimationFrame(loop);}break;case'KeyB':if(playing&&!paused){paused=true;showBoard();}break;}});
+    window.addEventListener('keyup',e=>{keys[e.code]=false;});
+    /*──────────────────────── MENU BTN */
+    startBtn.onclick=()=>{menu.classList.add('hidden');playing=true;paused=false;resetGame();ui();requestAnimationFrame(loop);} ;
+    closeBoard.onclick=()=>{boardOv.classList.add('hidden');paused=false;requestAnimationFrame(loop);} ;
+    const showBoard=()=>{board.innerHTML=highs.slice(0,10).map(s=>`<li>${s}</li>`).join('');boardOv.classList.remove('hidden');};
+    /*──────────────────────── ACH BTN */
+    achBtn.onclick=()=>{refreshAchList();achOv.classList.remove('hidden');paused=true;};
+    closeAch.onclick=()=>{achOv.classList.add('hidden');paused=false;requestAnimationFrame(loop);} ;
+    /*──────────────────────── SHOP BTN */
+    shopBtn.onclick=()=>{refreshShop();shopOv.classList.remove('hidden');paused=true;};
+    closeShop.onclick=()=>{shopOv.classList.add('hidden');paused=false;requestAnimationFrame(loop);} ;
+    /*──────────────────────── BUTTONS */
+    soundBtn.onclick=()=>{bgm.muted=!bgm.muted;soundBtn.textContent=bgm.muted?'🔇':'🔊';};
+    fsBtn.onclick=()=>document.fullscreenElement?document.exitFullscreen():document.body.requestFullscreen();
+    let bright=false;themeBtn.onclick=()=>{bright=!bright;document.documentElement.style.setProperty('--bg0',bright?'#f8fafc':'#02040c');document.documentElement.style.setProperty('--txt',bright?'#0f172a':'#e2e8f0');themeBtn.textContent=bright?'🌙':'☀️';};
+    /*──────────────────────── STARFIELD INIT */
+    const ctx1=$('stars1').getContext('2d'),ctx2=$('stars2').getContext('2d'),ctx3=$('stars3').getContext('2d');let stars1=[],stars2=[],stars3=[];
+    const resize=()=>{['stars1','stars2','stars3'].forEach(id=>{$(id).width=innerWidth;$(id).height=innerHeight;});stars1=Array.from({length:120},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*2+0.5,spd:Math.random()*0.8+0.4}));stars2=Array.from({length:80},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*2+0.5,spd:Math.random()*0.6+0.2}));stars3=Array.from({length:50},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*1.5+0.5,spd:Math.random()*0.4+0.1}));};
+    const drawStars=(ctx,arr,spd)=>{ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);ctx.fillStyle='#ffffff44';arr.forEach(st=>{st.y+=st.spd*spd;if(st.y>ctx.canvas.height)st.y=0;ctx.fillRect(st.x,st.y,st.s,st.s);});};
+    window.addEventListener('resize',resize);resize();
+    /*──────────────────────── BEFORE UNLOAD */
+    window.addEventListener('beforeunload',()=>{localStorage.ci_coins=coins;localStorage.ci_xp=xp;localStorage.ci_plvl=playerLvl;});
+  })();
+  </script>
+</body>
+</html>
