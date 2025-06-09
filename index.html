@@ -43,7 +43,7 @@ export default function PortfolioSite() {
   return (
     <div className="bg-white text-gray-900 font-['Inter',sans-serif] leading-relaxed">
       {/* ---------- HERO ---------- */}
-      <header className="min-h-screen flex flex-col justify-between">
+      <header className="min-h-screen flex flex-col justify-between bg-gradient-to-b from-white via-gray-50 to-gray-100">
         <nav className="flex justify-between items-center px-6 py-4 md:px-12">
           <span className="text-xl md:text-2xl font-semibold tracking-tight select-none">
             VG.
@@ -69,6 +69,11 @@ export default function PortfolioSite() {
             Руководитель технопарка • Эксперт по аддитивному производству • Тренер
             WorldSkills
           </p>
+          <img
+            src="./Avatar_Ganshin.jpg"
+            alt="Владимир Ганьшин"
+            className="mt-8 w-32 h-32 md:w-48 md:h-48 rounded-full object-cover shadow-lg"
+          />
           <div className="mt-10 flex gap-4">
             <a
               href="#projects"
@@ -151,7 +156,7 @@ export default function PortfolioSite() {
               >
                 <img
                   src={proj.image}
-                  alt="project preview"
+                  alt={`Изображение проекта ${proj.title}`}
                   className="w-full h-56 object-cover"
                 />
                 <div className="p-6">
