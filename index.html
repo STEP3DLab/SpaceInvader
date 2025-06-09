@@ -1,145 +1,275 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Портфолио Владимира К. Ганьшина</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
-<style>
-  :root { --accent: #008f7a; }
-  body { font-family: 'Inter', sans-serif; }
-  h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
-</style>
-</head>
-<body class="bg-white text-gray-800 antialiased">
-  <!-- Hero section -->
-  <header id="hero" class="h-screen flex flex-col items-center justify-center text-center space-y-6">
-    <h1 class="text-4xl sm:text-6xl lg:text-[clamp(48px,6vw,80px)] font-bold">Владимир К. Ганьшин</h1>
-    <p class="text-lg">Директор технопарка и эксперт по обратному инжинирингу</p>
-    <a href="#" class="px-6 py-3 border border-gray-300 rounded hover:bg-[var(--accent)] hover:text-white transition-colors">Скачать CV</a>
-    <div id="webgl-container" class="w-full h-96 mt-8"></div>
-  </header>
-
-  <!-- About section -->
-  <section id="about" class="py-20">
-    <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 px-4">
-      <div class="flex-shrink-0 w-48 h-48 mx-auto md:mx-0 rounded-full overflow-hidden">
-        <img src="https://via.placeholder.com/300" alt="Портрет" class="w-full h-full object-cover">
-      </div>
-      <div>
-        <h2 class="text-3xl font-bold mb-4">Обо мне</h2>
-        <p class="mb-2">33 года, руководит технопарком университета с 2019, преподаватель РГСУ.</p>
-        <p class="text-sm text-gray-500" id="teaching-counter">9+ лет преподавания</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Competencies -->
-  <section id="skills" class="py-20 bg-gray-50">
-    <h2 class="text-3xl font-bold text-center mb-8">Ключевые компетенции</h2>
-    <div class="overflow-x-auto whitespace-nowrap px-4 space-x-4 flex">
-      <span class="px-4 py-2 border rounded-full">CAD/CAM/CAE</span>
-      <span class="px-4 py-2 border rounded-full">3D-печать (FDM, DLP, SLA)</span>
-      <span class="px-4 py-2 border rounded-full">Обратный инжиниринг</span>
-      <span class="px-4 py-2 border rounded-full">Промышленный дизайн</span>
-      <span class="px-4 py-2 border rounded-full">Прототипирование на ЧПУ</span>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="portfolio" class="py-20">
-    <h2 class="text-3xl font-bold text-center mb-8">Портфолио</h2>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide p-4">
-          <img src="https://via.placeholder.com/800x400" class="mb-4" alt="Проект 1">
-          <h3 class="text-xl font-semibold mb-2">Kawasaki Puccetti Racing</h3>
-          <p class="text-sm">Композитный обтекатель, совместно с Росатом/Уматекс</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Портфолио Владимира К. Ганьшина</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --accent: #008f7a;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Space Grotesk", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800 antialiased">
+    <!-- Hero section -->
+    <header
+      id="hero"
+      class="relative h-screen flex flex-col items-center justify-center text-center space-y-6 px-4 bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-700 text-white"
+    >
+      <nav
+        class="absolute top-0 left-0 right-0 flex items-center justify-between p-4"
+      >
+        <a href="#" class="font-bold text-lg">VKPortfolio</a>
+        <div class="space-x-4 hidden md:block">
+          <a href="#about" class="hover:text-gray-200">Обо мне</a>
+          <a href="#skills" class="hover:text-gray-200">Навыки</a>
+          <a href="#portfolio" class="hover:text-gray-200">Портфолио</a>
+          <a href="#contacts" class="hover:text-gray-200">Контакты</a>
         </div>
-        <div class="swiper-slide p-4">
-          <img src="https://via.placeholder.com/800x400" class="mb-4" alt="Проект 2">
-          <h3 class="text-xl font-semibold mb-2">Проект 2</h3>
-          <p class="text-sm">Описание проекта</p>
+      </nav>
+      <h1 class="text-4xl sm:text-6xl lg:text-[clamp(48px,6vw,80px)] font-bold">
+        Владимир К. Ганьшин
+      </h1>
+      <p class="text-lg max-w-2xl">
+        Директор технопарка и эксперт по обратному инжинирингу
+      </p>
+      <a
+        href="#"
+        class="px-6 py-3 bg-[var(--accent)] text-white rounded shadow hover:opacity-90 transition-colors"
+        >Скачать CV</a
+      >
+      <div id="webgl-container" class="w-full h-96 mt-8"></div>
+    </header>
+
+    <!-- About section -->
+    <section id="about" class="py-20">
+      <div
+        class="container mx-auto flex flex-col md:flex-row items-center gap-8 px-4"
+      >
+        <div
+          class="flex-shrink-0 w-48 h-48 mx-auto md:mx-0 rounded-full overflow-hidden"
+        >
+          <img
+            src="https://via.placeholder.com/300"
+            alt="Портрет"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold mb-4">Обо мне</h2>
+          <p class="mb-2">
+            33 года, руководит технопарком университета с 2019, преподаватель
+            РГСУ.
+          </p>
+          <p class="text-sm text-gray-500" id="teaching-counter">
+            9+ лет преподавания
+          </p>
         </div>
       </div>
-      <!-- Add Pagination -->
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Achievements -->
-  <section id="achievements" class="py-20 bg-gray-50">
-    <h2 class="text-3xl font-bold text-center mb-8">Достижения</h2>
-    <div class="container mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-4">
-      <div class="p-4 border rounded">WorldSkills 2019 — бронза (Казань)</div>
-      <div class="p-4 border rounded">BRICS 2020 — золото (Шанхай)</div>
-      <div class="p-4 border rounded">HI-TECH 2023 — бронза (Великий Новгород)</div>
-      <div class="p-4 border rounded">Robot Battle 2023 — Top 16 (Disintegrator)</div>
-    </div>
-  </section>
+    <!-- Competencies -->
+    <section id="skills" class="py-20 bg-gray-50">
+      <h2 class="text-3xl font-bold text-center mb-8">Ключевые компетенции</h2>
+      <div class="overflow-x-auto whitespace-nowrap px-4 space-x-4 flex">
+        <span class="px-4 py-2 border rounded-full">CAD/CAM/CAE</span>
+        <span class="px-4 py-2 border rounded-full"
+          >3D-печать (FDM, DLP, SLA)</span
+        >
+        <span class="px-4 py-2 border rounded-full">Обратный инжиниринг</span>
+        <span class="px-4 py-2 border rounded-full">Промышленный дизайн</span>
+        <span class="px-4 py-2 border rounded-full"
+          >Прототипирование на ЧПУ</span
+        >
+      </div>
+    </section>
 
-  <!-- Courses -->
-  <section id="courses" class="py-20">
-    <h2 class="text-3xl font-bold text-center mb-8">Курсы и преподавание</h2>
-    <ul class="space-y-4 px-4 max-w-2xl mx-auto">
-      <li class="p-4 border-l-4 border-[var(--accent)]">Промышленный дизайн и инжиниринг</li>
-      <li class="p-4 border-l-4 border-[var(--accent)]">CAD-инжиниринг</li>
-      <li class="p-4 border-l-4 border-[var(--accent)]">Аддитивное производство и обратный инжиниринг</li>
-    </ul>
-  </section>
+    <!-- Portfolio -->
+    <section id="portfolio" class="py-20">
+      <h2 class="text-3xl font-bold text-center mb-8">Портфолио</h2>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide p-4">
+            <img
+              src="https://via.placeholder.com/800x400"
+              class="mb-4"
+              alt="Проект 1"
+            />
+            <h3 class="text-xl font-semibold mb-2">Kawasaki Puccetti Racing</h3>
+            <p class="text-sm">
+              Композитный обтекатель, совместно с Росатом/Уматекс
+            </p>
+          </div>
+          <div class="swiper-slide p-4">
+            <img
+              src="https://via.placeholder.com/800x400"
+              class="mb-4"
+              alt="Проект 2"
+            />
+            <h3 class="text-xl font-semibold mb-2">Проект 2</h3>
+            <p class="text-sm">Описание проекта</p>
+          </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
 
-  <!-- Media -->
-  <section id="media" class="py-20 bg-gray-50">
-    <h2 class="text-3xl font-bold text-center mb-8">Интервью и медиа</h2>
-    <div class="grid md:grid-cols-2 gap-8 px-4">
-      <div class="aspect-video bg-gray-200 flex items-center justify-center">Видео 1</div>
-      <div class="aspect-video bg-gray-200 flex items-center justify-center">Видео 2</div>
-    </div>
-  </section>
+    <!-- Achievements -->
+    <section id="achievements" class="py-20 bg-gray-50">
+      <h2 class="text-3xl font-bold text-center mb-8">Достижения</h2>
+      <div
+        class="container mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-4"
+      >
+        <div class="p-4 border rounded">WorldSkills 2019 — бронза (Казань)</div>
+        <div class="p-4 border rounded">BRICS 2020 — золото (Шанхай)</div>
+        <div class="p-4 border rounded">
+          HI-TECH 2023 — бронза (Великий Новгород)
+        </div>
+        <div class="p-4 border rounded">
+          Robot Battle 2023 — Top 16 (Disintegrator)
+        </div>
+      </div>
+    </section>
 
-  <!-- Contacts -->
-  <footer id="contacts" class="py-10 bg-gray-800 text-gray-100">
-    <div class="container mx-auto flex flex-col items-center space-y-4">
-      <a href="https://t.me/STEP_3D_news" class="hover:text-[var(--accent)]">Telegram @STEP_3D_news</a>
-      <a href="mailto:projects.step3d@gmail.com" class="hover:text-[var(--accent)]">projects.step3d@gmail.com</a>
-      <form class="w-full max-w-md space-y-4">
-        <input type="text" name="name" placeholder="Имя" class="w-full p-2 text-gray-900" required>
-        <input type="email" name="email" placeholder="Email" class="w-full p-2 text-gray-900" required>
-        <textarea name="message" placeholder="Сообщение" class="w-full p-2 text-gray-900" rows="4" required></textarea>
-        <label class="inline-flex items-center"><input type="checkbox" required class="mr-2">Согласен с обработкой данных</label>
-        <button type="submit" class="w-full py-2 border border-gray-300 rounded hover:bg-[var(--accent)] hover:text-white transition-colors">Отправить</button>
-      </form>
-    </div>
-  </footer>
+    <!-- Courses -->
+    <section id="courses" class="py-20">
+      <h2 class="text-3xl font-bold text-center mb-8">Курсы и преподавание</h2>
+      <ul class="space-y-4 px-4 max-w-2xl mx-auto">
+        <li class="p-4 border-l-4 border-[var(--accent)]">
+          Промышленный дизайн и инжиниринг
+        </li>
+        <li class="p-4 border-l-4 border-[var(--accent)]">CAD-инжиниринг</li>
+        <li class="p-4 border-l-4 border-[var(--accent)]">
+          Аддитивное производство и обратный инжиниринг
+        </li>
+      </ul>
+    </section>
 
-  <!-- Scripts -->
-  <script type="module">
-    import * as THREE from 'https://cdn.skypack.dev/three@0.155.0';
-    let scene = new THREE.Scene();
-    let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    let renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('webgl-container').appendChild(renderer.domElement);
-    let geometry = new THREE.BoxGeometry(1, 0.2, 1);
-    let wireframe = new THREE.WireframeGeometry(geometry);
-    let line = new THREE.LineSegments(wireframe, new THREE.LineBasicMaterial({ color: '#777' }));
-    scene.add(line);
-    camera.position.z = 3;
-    let paused = false;
-    function animate() {
-      if (!paused) line.rotation.y += 0.01;
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
-    }
-    animate();
-    document.getElementById('webgl-container').addEventListener('mouseenter', () => paused = true);
-    document.getElementById('webgl-container').addEventListener('mouseleave', () => paused = false);
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script>
-    const swiper = new Swiper('.swiper', { loop: true, pagination: { el: '.swiper-pagination' } });
-  </script>
-</body>
+    <!-- Media -->
+    <section id="media" class="py-20 bg-gray-50">
+      <h2 class="text-3xl font-bold text-center mb-8">Интервью и медиа</h2>
+      <div class="grid md:grid-cols-2 gap-8 px-4">
+        <div class="aspect-video bg-gray-200 flex items-center justify-center">
+          Видео 1
+        </div>
+        <div class="aspect-video bg-gray-200 flex items-center justify-center">
+          Видео 2
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <footer
+      id="contacts"
+      class="py-10 text-gray-100 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800"
+    >
+      <div class="container mx-auto flex flex-col items-center space-y-4">
+        <a href="https://t.me/STEP_3D_news" class="hover:text-[var(--accent)]"
+          >Telegram @STEP_3D_news</a
+        >
+        <a
+          href="mailto:projects.step3d@gmail.com"
+          class="hover:text-[var(--accent)]"
+          >projects.step3d@gmail.com</a
+        >
+        <form class="w-full max-w-md space-y-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Имя"
+            class="w-full p-2 text-gray-900"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            class="w-full p-2 text-gray-900"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Сообщение"
+            class="w-full p-2 text-gray-900"
+            rows="4"
+            required
+          ></textarea>
+          <label class="inline-flex items-center"
+            ><input type="checkbox" required class="mr-2" />Согласен с
+            обработкой данных</label
+          >
+          <button
+            type="submit"
+            class="w-full py-2 bg-[var(--accent)] text-white rounded hover:opacity-90 transition-colors"
+          >
+            Отправить
+          </button>
+        </form>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module">
+      import * as THREE from "https://cdn.skypack.dev/three@0.155.0";
+      let scene = new THREE.Scene();
+      let camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000,
+      );
+      let renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document
+        .getElementById("webgl-container")
+        .appendChild(renderer.domElement);
+      let geometry = new THREE.BoxGeometry(1, 0.2, 1);
+      let wireframe = new THREE.WireframeGeometry(geometry);
+      let line = new THREE.LineSegments(
+        wireframe,
+        new THREE.LineBasicMaterial({ color: "#777" }),
+      );
+      scene.add(line);
+      camera.position.z = 3;
+      let paused = false;
+      function animate() {
+        if (!paused) line.rotation.y += 0.01;
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+      animate();
+      document
+        .getElementById("webgl-container")
+        .addEventListener("mouseenter", () => (paused = true));
+      document
+        .getElementById("webgl-container")
+        .addEventListener("mouseleave", () => (paused = false));
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".swiper", {
+        loop: true,
+        pagination: { el: ".swiper-pagination" },
+      });
+    </script>
+  </body>
 </html>
-
