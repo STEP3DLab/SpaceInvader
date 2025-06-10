@@ -9,7 +9,7 @@ images. Open `index.html` in any modern web browser to view it.
 - `index.html` – main page of the site with styles and JavaScript inline.
 - `style.css` – additional stylesheet with color variables and layout rules.
 - `blog_template.html` – basic template for blog posts or articles.
-- `Avatar_Ganshin.jpg`, `avatar.png.png`, `ChatGPT Image 14 апр. 2025 г., 19_42_47.png` – images used on the page.
+- `Avatar_Ganshin.jpg`, `avatar.png`, `ChatGPT Image 14 апр. 2025 г., 19_42_47.png` – images used on the page.
 - `output_compressed.mp4` – short video displayed in the "Кратко обо мне" section.
 - `icons/` – collection of SVG logos for different software packages:
   - `artec.svg`
