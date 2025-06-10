@@ -23,3 +23,38 @@ overlay.addEventListener('click', () => {
     overlay.style.display = 'none';
   }
 });
+
+// ===== Карусель с фотографиями экспертиз =====
+const expertPhotos = [
+  'https://source.unsplash.com/random/400x250?sig=1',
+  'https://source.unsplash.com/random/400x250?sig=2',
+  'https://source.unsplash.com/random/400x250?sig=3',
+  'https://source.unsplash.com/random/400x250?sig=4',
+  'https://source.unsplash.com/random/400x250?sig=5',
+  'https://source.unsplash.com/random/400x250?sig=6',
+  'https://source.unsplash.com/random/400x250?sig=7',
+  'https://source.unsplash.com/random/400x250?sig=8',
+  'https://source.unsplash.com/random/400x250?sig=9',
+  'https://source.unsplash.com/random/400x250?sig=10'
+];
+
+let expertIndex = 0;
+const expertImg = document.getElementById('expertImg');
+const nextBtn = document.getElementById('expertNext');
+const prevBtn = document.getElementById('expertPrev');
+
+function updateExpert() {
+  expertImg.src = expertPhotos[expertIndex];
+}
+
+if (expertImg) {
+  updateExpert();
+  nextBtn.addEventListener('click', () => {
+    expertIndex = (expertIndex + 1) % expertPhotos.length;
+    updateExpert();
+  });
+  prevBtn.addEventListener('click', () => {
+    expertIndex = (expertIndex - 1 + expertPhotos.length) % expertPhotos.length;
+    updateExpert();
+  });
+}

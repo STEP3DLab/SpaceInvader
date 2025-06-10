@@ -215,6 +215,38 @@ thead th {
   max-height: 90%;
 }
 
+/* ===== простой карусель ===== */
+.carousel {
+  position: relative;
+  width: 200px;
+  margin: 0.5em 0;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+.carousel button.prev {
+  left: 0;
+}
+
+.carousel button.next {
+  right: 0;
+}
+
 .lectures-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
