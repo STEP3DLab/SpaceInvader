@@ -4,10 +4,11 @@
   --white: #fff;
   --gray-400: #666;
   --gray-050: #e6e6e6;
+  --accent-color: #f08080;
 
   /* layout */
   --content-max-width: 70rem;
-  --page-padding: 32px 24px;
+  --page-padding: 48px 32px;
 }
 
 /* ===== базовый layout ===== */
@@ -35,16 +36,16 @@ body {
 
 /* ===== типографика ===== */
 h1 {
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 600;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.5em;
 }
 
 .tagline {
   font-style: italic;
   color: var(--gray-400);
-  font-size: 0.95rem;
-  margin-bottom: 1.2em;
+  font-size: 1rem;
+  margin-bottom: 1.5em;
 }
 
 h1,
@@ -60,18 +61,22 @@ td {
   line-height: 1.5;
 }
 
+p {
+  margin-bottom: 0.75em;
+}
+
 /* ===== мини-навигация ===== */
 .top-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
 }
 
 .top-nav a {
   text-decoration: none;
-  color: inherit;
+  color: var(--accent-color);
   position: relative;
 }
 
@@ -94,7 +99,7 @@ td {
 /* ===== collapsibles (details/summary) ===== */
 details {
   border-bottom: 1px solid var(--gray-050);
-  padding: 0.75em 0;
+  padding: 1em 0;
 }
 
 details details {
@@ -148,7 +153,7 @@ ul {
 }
 
 li {
-  margin-bottom: 0.25em;
+  margin-bottom: 0.5em;
 }
 
 li strong {
@@ -157,7 +162,7 @@ li strong {
 
 /* ссылки */
 a {
-  color: inherit;
+  color: var(--accent-color);
   text-decoration: underline;
 }
 
@@ -224,7 +229,7 @@ thead th {
 
 /* ===== story styles ===== */
 #avatar {
-  border: 3px solid #f08080;
+  border: 3px solid var(--accent-color);
   padding: 2px;
   box-sizing: border-box;
 }
@@ -246,9 +251,9 @@ thead th {
   position: absolute;
   top: 1em;
   right: 1em;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--accent-color);
   color: #fff;
-  border: 1px solid #fff;
+  border: none;
   padding: 0.25em 0.5em;
   cursor: pointer;
 }
@@ -279,7 +284,7 @@ thead th {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--accent-color);
   color: #fff;
   border: none;
   padding: 0.25em 0.5em;
@@ -353,4 +358,22 @@ thead th {
   .about-video {
     max-width: 720px;
   }
+}
+
+/* ===== utility effects ===== */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
