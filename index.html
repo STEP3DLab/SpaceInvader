@@ -258,6 +258,24 @@
     margin-top: 0.25em;
     font-size: 0.9rem;
   }
+
+  .tech-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0.5em;
+  }
+
+  .tech-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 0.25em;
+  }
+
+  .tech-list img.icon {
+    width: 24px;
+    height: 24px;
+  }
 </style>
 </head>
 
@@ -366,12 +384,31 @@
       <li>Промышленный дизайн и прототипирование</li>
     </ul>
     <h4>Технологический стек</h4>
-    <p>
-      <strong>CAD:</strong> Inventor Professional · Fusion 360 · T‑FLEX CAD · Geomagic Design X · GOM Inspect<br />
-      <strong>3D‑печать:</strong> Ultimaker Cura · CHITUBOX · Polygon X · Creality Slicer<br />
-      <strong>3D‑сканирование:</strong> Artec Studio · RangeVision ScanCenter<br />
-      <strong>Код:</strong> C++ · Python
-    </p>
+    <p><strong>CAD:</strong></p>
+    <ul class="tech-list">
+      <li><img class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/autodesk.svg" alt="Inventor Professional" /> Inventor Professional</li>
+      <li><img class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/autodesk.svg" alt="Fusion 360" /> Fusion&nbsp;360</li>
+      <li><img class="icon" src="icons/tflex.svg" alt="T-FLEX CAD" /> T‑FLEX&nbsp;CAD</li>
+      <li><img class="icon" src="icons/geomagic.svg" alt="Geomagic Design X" /> Geomagic&nbsp;Design&nbsp;X</li>
+      <li><img class="icon" src="icons/gominspect.svg" alt="GOM Inspect" /> GOM&nbsp;Inspect</li>
+    </ul>
+    <p><strong>3D‑печать:</strong></p>
+    <ul class="tech-list">
+      <li><img class="icon" src="icons/ultimaker.svg" alt="Ultimaker Cura" /> Ultimaker&nbsp;Cura</li>
+      <li><img class="icon" src="icons/chitubox.svg" alt="CHITUBOX" /> CHITUBOX</li>
+      <li><img class="icon" src="icons/polygonx.svg" alt="Polygon X" /> Polygon&nbsp;X</li>
+      <li><img class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/creality.svg" alt="Creality Slicer" /> Creality&nbsp;Slicer</li>
+    </ul>
+    <p><strong>3D‑сканирование:</strong></p>
+    <ul class="tech-list">
+      <li><img class="icon" src="icons/artec.svg" alt="Artec Studio" /> Artec&nbsp;Studio</li>
+      <li><img class="icon" src="icons/rangevision.svg" alt="RangeVision ScanCenter" /> RangeVision&nbsp;ScanCenter</li>
+    </ul>
+    <p><strong>Код:</strong></p>
+    <ul class="tech-list">
+      <li><img class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/cplusplus.svg" alt="C++" /> C++</li>
+      <li><img class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/python.svg" alt="Python" /> Python</li>
+    </ul>
   </details>
 
   <!-- ===== Образование ===== -->
