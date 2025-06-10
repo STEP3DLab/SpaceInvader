@@ -255,3 +255,10 @@ thead th {
   width: 24px;
   height: 24px;
 }
+.about-video {
+  width: 100%;
+  height: auto;
+  max-width: 480px;
+  display: block;
+  margin: 0 auto;
+}
