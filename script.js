@@ -1,15 +1,3 @@
-// theme toggle
-const themeBtn=document.getElementById('theme-toggle');
-if(themeBtn){
-  themeBtn.addEventListener('click',()=>{
-    const isDark=document.documentElement.getAttribute('data-theme')==='dark';
-    document.documentElement.setAttribute('data-theme',isDark?'light':'dark');
-    localStorage.setItem('theme',isDark?'light':'dark');
-  });
-}
-if(localStorage.getItem('theme')==='dark'){
-  document.documentElement.setAttribute('data-theme','dark');
-}
 // back to top
 const backBtn=document.getElementById('back-to-top');
 window.addEventListener('scroll',()=>{
