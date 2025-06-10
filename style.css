@@ -4,12 +4,6 @@
   --accent-color:#ff6600;
   --nav-bg:#333;
 }
-[data-theme='dark']{
-  --bg-color:#222;
-  --text-color:#eee;
-  --accent-color:#ffa500;
-  --nav-bg:#000;
-}
 body{
   margin:0;
   font-family:'Montserrat',sans-serif;
