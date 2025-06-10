@@ -15,9 +15,45 @@
  ul li:hover{background-color:#f0f0f0;transform:scale(1.02);}
  a{transition:color 0.3s,transform 0.3s;}
  a:hover{color:#ff6600;transform:scale(1.05);}
+
+ #cube-container{perspective:800px;text-align:center;margin:20px auto;width:220px;position:relative;}
+ .cube{position:relative;width:200px;height:200px;transform-style:preserve-3d;transition:transform 0.6s;margin:0 auto;}
+ .face{position:absolute;width:200px;height:200px;backface-visibility:hidden;}
+ .face img{width:100%;height:100%;object-fit:cover;}
+ .front{transform:translateZ(100px);}
+ .back{transform:rotateY(180deg) translateZ(100px);}
+ .right{transform:rotateY(90deg) translateZ(100px);}
+ .left{transform:rotateY(-90deg) translateZ(100px);}
+ .top{transform:rotateX(90deg) translateZ(100px);}
+ .bottom{transform:rotateX(-90deg) translateZ(100px);}
+ #controls{display:grid;grid-template-columns:40px 40px 40px;grid-template-rows:40px 40px 40px;grid-template-areas:". up ." "left home right" ". down .";gap:5px;margin-bottom:10px;justify-content:center;margin-left:auto;margin-right:auto;}
+ #controls button{width:40px;height:40px;cursor:pointer;}
+ #controls .up{grid-area:up;}
+ #controls .down{grid-area:down;}
+ #controls .left{grid-area:left;}
+ #controls .right{grid-area:right;}
+ #controls .home{grid-area:home;}
 </style>
 </head>
 <body>
+<div id="cube-container">
+  <div id="controls">
+    <button class="up">&#8593;</button>
+    <button class="left">&#8592;</button>
+    <button class="home">&#8635;</button>
+    <button class="right">&#8594;</button>
+    <button class="down">&#8595;</button>
+  </div>
+  <div class="cube">
+    <div class="face front"><img src="Avatar_Ganshin.jpg" alt="Front"></div>
+    <div class="face back"><img src="https://images.unsplash.com/photo-1606851092212-6fb5d3642a5b?auto=format&w=512&h=512&q=80" alt="Back"></div>
+    <div class="face right"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&w=512&h=512&q=80" alt="Right"></div>
+    <div class="face left"><img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&w=512&h=512&q=80" alt="Left"></div>
+    <div class="face top"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&w=512&h=512&q=80" alt="Top"></div>
+    <div class="face bottom"><img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&w=512&h=512&q=80" alt="Bottom"></div>
+  </div>
+</div>
+
 <h1>Владимир Ганьшин</h1>
 <img src="Avatar_Ganshin.jpg" alt="Владимир Ганьшин" class="avatar">
 <p class="tagline">Делаю будущее осязаемым: от 3D‑идеи до работающего прототипа</p>
@@ -172,6 +208,17 @@
 <ul><li>Шахматы — чемпион РГСУ среди сотрудников (2023)</li></ul>
 
 </details>
+
+<script>
+const cube=document.querySelector('.cube');
+let rotX=0,rotY=0;
+document.querySelector('#controls .up').addEventListener('click',()=>{rotX+=90;update();});
+document.querySelector('#controls .down').addEventListener('click',()=>{rotX-=90;update();});
+document.querySelector('#controls .left').addEventListener('click',()=>{rotY-=90;update();});
+document.querySelector('#controls .right').addEventListener('click',()=>{rotY+=90;update();});
+document.querySelector('#controls .home').addEventListener('click',()=>{rotX=0;rotY=0;update();});
+function update(){cube.style.transform=`rotateX(${rotX}deg) rotateY(${rotY}deg)`;}
+</script>
 
 </body>
 </html>
