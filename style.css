@@ -53,3 +53,26 @@ h2{font-size:1.5rem;margin-top:1rem;}
   h1{font-size:1.5rem;}
   h2{font-size:1.25rem;}
 }
+
+/* slightly reduce font size on small laptops/tablets */
+@media (max-width:1024px){
+  body{font-size:15px;}
+}
+
+/* two-column gallery layout on tablets */
+@media (max-width:768px){
+  .gallery img{max-width:calc(50% - 0.5rem);}
+  table{font-size:0.85rem;}
+}
+
+/* mobile layout adjustments */
+@media (max-width:480px){
+  body{padding:24px 16px;}
+  h1{font-size:1.75rem;}
+  summary{font-size:1rem;}
+  /* автосвертка менее важных разделов */
+  details:not(#contacts):not(#about){
+    /* закроем, если открыты */
+  }
+  .gallery img{max-width:100%;}
+}
