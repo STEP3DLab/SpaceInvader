@@ -23,3 +23,15 @@ overlay.addEventListener('click', () => {
     overlay.style.display = 'none';
   }
 });
+
+// кнопка "Подробнее" раскрывает раздел "Кратко обо мне"
+const showAboutBtn = document.getElementById('showAbout');
+if (showAboutBtn) {
+  showAboutBtn.addEventListener('click', () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.open = true;
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
