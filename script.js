@@ -80,3 +80,28 @@ if (expertImg) {
     updateExpert();
   });
 }
+
+// ===== Подсветка активной ссылки в навигации =====
+const navLinks = document.querySelectorAll('.top-nav a');
+const sections = Array.from(navLinks).map(link => {
+  const id = link.getAttribute('href');
+  return document.querySelector(id);
+}).filter(Boolean);
+
+const observerOptions = {
+  root: null,
+  rootMargin: '-50% 0px -50% 0px',
+  threshold: 0
+};
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, observerOptions);
+
+sections.forEach(section => observer.observe(section));
