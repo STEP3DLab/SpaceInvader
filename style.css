@@ -210,6 +210,21 @@ thead th {
   z-index: 1000;
 }
 
+#storyOverlay .overlay-close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+#storyOverlay .overlay-close:focus {
+  outline: 2px solid #fff;
+}
+
 #storyOverlay img {
   max-width: 90%;
   max-height: 90%;

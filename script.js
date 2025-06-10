@@ -7,12 +7,15 @@ const stories = [
 const avatar = document.getElementById('avatar');
 const overlay = document.getElementById('storyOverlay');
 const storyImg = document.getElementById('storyImg');
+const closeBtn = document.getElementById('closeOverlay');
 let index = 0;
 
 avatar.addEventListener('click', () => {
   index = 0;
   storyImg.src = stories[index];
   overlay.style.display = 'flex';
+  overlay.setAttribute('aria-hidden', 'false');
+  closeBtn.focus();
 });
 
 overlay.addEventListener('click', () => {
@@ -21,6 +24,25 @@ overlay.addEventListener('click', () => {
     storyImg.src = stories[index];
   } else {
     overlay.style.display = 'none';
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+});
+
+function closeOverlay() {
+  overlay.style.display = 'none';
+  overlay.setAttribute('aria-hidden', 'true');
+}
+
+if (closeBtn) {
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeOverlay();
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && overlay.style.display === 'flex') {
+    closeOverlay();
   }
 });
 
