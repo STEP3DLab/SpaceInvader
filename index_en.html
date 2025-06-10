@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vladimir Ganshin — business card</title>
+
+  <!-- 8. Open Graph / Twitter Card -->
+  <meta property="og:title" content="Vladimir Ganshin — business card" />
+  <meta property="og:description" content="Moscow, 34 years old, expert in industrial design and engineering" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="description" content="Краткое описание визитки" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body itemscope itemtype="https://schema.org/Person">
+<header>
+  <h1 itemprop="name">Vladimir Ganshin</h1>
+  <img loading="lazy" id="avatar" src="Avatar_Ganshin.jpg" alt="Avatar of Vladimir Ganshin" itemprop="image" style="max-width:200px;border-radius:0;cursor:pointer;" />
+  <p class="tagline" itemprop="description">Moscow, 34 years old, expert in industrial design and engineering</p>
+
+  <!-- 5. presentгация-якоря -->
+  <nav class="top-nav">
+    <a href="#contacts">Contacts</a>
+    <a href="#about">About me</a>
+    <a href="#positions">Positions</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#awards">Awards</a>
+    <a href="#expert">Expert</a>
+    <a href="#publications">Publications</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#interests">Interests</a>
+  </nav>
+</header>
+  <div id="storyOverlay">
+    <img loading="lazy" id="storyImg" src="" alt="Story photo of Vladimir Ganshin" />
+  </div>
+
+  <!-- ===== Contacts ===== -->
+  <details id="contacts" open itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+    <summary><strong>Contacts</strong></summary>
+      <address>
+    <ul>
+      <li itemprop="addressLocality">Moscow, Russia</li>
+      <li>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+        <a href="mailto:ganjshin.vk@example.com" itemprop="email">ganjshin.vk@example.com</a>
+      </li>
+      <li>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55 1.13 1 1 0 01.9 1v3.56a1 1 0 01-.91 1A16 16 0 013 5.91a1 1 0 011-0.91h3.56a1 1 0 011 .9 11.36 11.36 0 001.13 3.55 1 1 0 01-.21 1.09l-2.2 2.2z"/></svg>
+        <a href="tel:+79123456789" itemprop="telephone">+7 912 345-67-89</a>
+      </li>
+      <li>
+        <strong>Telegram / LinkedIn:</strong>
+        <a href="https://t.me/yourhandle" itemprop="sameAs">t.me/yourhandle</a> |
+        <a href="https://linkedin.com/in/ganjshin" itemprop="sameAs">linkedin.com/in/ganjshin</a>
+      </li>
+    </ul>
+      </address>
+  </details>
+
+  <!-- ===== About me ===== -->
+  <details id="about">
+    <summary><strong>About me briefly</strong></summary>
+    <video class="about-video" src="output_compressed.mp4" controls></video>
+    <p>Since 2019 I lead the technopark of the Russian State Social University (RSSU) and teach engineering disciplines at the Pyatigorsk branch.</p>
+    <h4>Key facts</h4>
+    <ul>
+      <li><strong>25+</strong> applied engineering projects per year</li>
+      <li><strong>300+</strong> trained students and professionals</li>
+      <li><strong>10</strong> medals at national and international championships</li>
+      <li><strong>1 200+</strong> academic hours of proprietary courses</li>
+    </ul>
+  </details>
+
+  <!-- ===== Positions ===== -->
+  <details id="positions">
+    <summary><strong>Current positions</strong></summary>
+    <table>
+      <thead><tr><th>Years</th><th>Position</th><th>Organization</th></tr></thead>
+      <tbody>
+        <tr><td>2019 – present</td><td itemprop="jobTitle">Head of technopark</td><td>RSSU, Moscow</td></tr>
+        <tr><td>2019 – present</td><td itemprop="jobTitle">Lecturer</td><td>RSSU, Pyatigorsk branch</td></tr>
+      </tbody>
+    </table>
+  </details>
+
+  <!-- ===== Skills ===== -->
+  <details id="skills">
+    <summary><strong>Skills and tools</strong></summary>
+    <h4>Key skills</h4>
+    <ul>
+      <li>CAD/CAM/CAE‑моделирование</li>
+      <li>Реверсивный инжиниринг</li>
+      <li>Аддитивное производство (FDM, DLP, SLA)</li>
+      <li>Промышленный дизайн и прототипирование</li>
+    </ul>
+    <h4>Technology stack</h4>
+    <p><strong>CAD:</strong></p>
+    <ul class="tech-list">
+      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/autodesk.svg" alt="Logo of Inventor Professional" /> Inventor Professional</li>
+      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/autodesk.svg" alt="Logo of Fusion 360" /> Fusion&nbsp;360</li>
+      <li><img loading="lazy" class="icon" src="icons/tflex.svg" alt="Logo of T-FLEX CAD" /> T‑FLEX&nbsp;CAD</li>
+      <li><img loading="lazy" class="icon" src="icons/geomagic.svg" alt="Logo of Geomagic Design X" /> Geomagic&nbsp;Design&nbsp;X</li>
+      <li><img loading="lazy" class="icon" src="icons/gominspect.svg" alt="Logo of GOM Inspect" /> GOM&nbsp;Inspect</li>
+    </ul>
+    <p><strong>3D printing:</strong></p>
+    <ul class="tech-list">
+      <li><img loading="lazy" class="icon" src="icons/ultimaker.svg" alt="Logo of Ultimaker Cura" /> Ultimaker&nbsp;Cura</li>
+      <li><img loading="lazy" class="icon" src="icons/chitubox.svg" alt="Logo of CHITUBOX" /> CHITUBOX</li>
+      <li><img loading="lazy" class="icon" src="icons/polygonx.svg" alt="Logo of Polygon X" /> Polygon&nbsp;X</li>
+      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/creality.svg" alt="Logo of Creality Slicer" /> Creality&nbsp;Slicer</li>
+    </ul>
+    <p><strong>3D scanning:</strong></p>
+    <ul class="tech-list">
+      <li><img loading="lazy" class="icon" src="icons/artec.svg" alt="Logo of Artec Studio" /> Artec&nbsp;Studio</li>
+      <li><img loading="lazy" class="icon" src="icons/rangevision.svg" alt="Logo of RangeVision ScanCenter" /> RangeVision&nbsp;ScanCenter</li>
+    </ul>
+    <p><strong>Code:</strong></p>
+    <ul class="tech-list">
+      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/cplusplus.svg" alt="Logo of C++" /> C++</li>
+      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/python.svg" alt="Logo of Python" /> Python</li>
+    </ul>
+  </details>
+
+  <!-- ===== Education ===== -->
+  <details id="education">
+    <summary><strong>Education</strong></summary>
+    <table>
+      <thead><tr><th>Years</th><th>Institution</th><th>Qualification</th></tr></thead>
+      <tbody>
+        <tr><td>2008‑2012</td><td itemprop="alumniOf">MSTU "Stankin", Dept. ITiTF</td><td>Bachelor in technology, equipment and automation of mechanical engineering production</td></tr>
+        <tr><td>2012‑2014</td><td>MSTU "Stankin", Dept. ITiTF</td><td>Master in design and technological support of manufacturing</td></tr>
+        <tr><td>2014‑2018</td><td>MSTU "Stankin"</td><td>Postgraduate studies, specialty 05.02.07 "Technology and equipment for mechanical and physical-technical processing"</td></tr>
+      </tbody>
+    </table>
+    <h4>Professional development</h4>
+    <ul>
+      <li>Engineering design CAD — Moscow Polytechnic</li>
+      <li>State and municipal management — RSSU</li>
+    </ul>
+  </details>
+
+  <!-- ===== Teaching experience ===== -->
+  <details id="experience">
+    <summary><strong>Педагогический опыт</strong></summary>
+    <table>
+      <thead><tr><th>Период</th><th>Организация</th><th>Роль</th></tr></thead>
+      <tbody>
+        <tr><td>2014‑2018</td><td>MSTU "Stankin", Polytechnic College #42, ZKNO</td><td>Teacher / industrial training master</td></tr>
+        <tr><td>2018‑present</td><td>RSSU Technopark</td><td>Head, continuing education lecturer</td></tr>
+        <tr><td>2021-2022</td><td>School "Maryina Roshcha named after V.F. Orlov"</td><td>Distance learning teacher (IT classes)</td></tr>
+      </tbody>
+    </table>
+    <h4>Courses taught</h4>
+    <ul>
+      <li><strong>Industrial design and engineering</strong> (автор)</li>
+      <li><strong>Engineering design (CAD)</strong> (автор)</li>
+      <li><strong>Reverse engineering and additive manufacturing technologies</strong> (соавтор)</li>
+      <li><strong>AI technologies in professional activities</strong> (автор)</li>
+      <li><strong>Concept of modern science</strong> (соавтор)</li>
+    </ul>
+  </details>
+
+  <!-- ===== Awards and achievements ===== -->
+  <details id="awards">
+    <summary><strong>Achievements and awards</strong></summary>
+    <h4>Coaching achievements</h4>
+    <ul>
+      <li>Coach of the Russian national team (2019-2021)
+        <ul>
+          <li>🥇 BRICS Skills 2020, Shanghai</li>
+          <li>🥉 WorldSkills 2019, Kazan</li>
+        </ul></li>
+      <li>Trained 4 champions of Russia (WorldSkills 2018-2021)</li>
+    </ul>
+    <h4>Personal awards</h4>
+    <ul>
+      <li>🥈 Silver — Interregional "Reverse Engineering" Championship, Orenburg 2025</li>
+      <li>🥉 Bronze — High Technology Championship finals, Veliky Novgorod 2023</li>
+    </ul>
+    <h4>Team "Disintegrator"</h4>
+    <ul><li>TOP 16 "Robot Battles" (100+ kg) — 2023-2024</li></ul>
+  </details>
+
+  <!-- ===== Expert activity ===== -->
+  <details id="expert">
+    <summary><strong>Expertная деятельность</strong></summary>
+    <div class="carousel" id="expertCarousel">
+      <button class="prev" id="expertPrev" aria-label="Previous photo">&#10094;</button>
+      <img loading="lazy" id="expertImg" src="" alt="Expert photo" />
+      <button class="next" id="expertNext" aria-label="Next photo">&#10095;</button>
+    </div>
+    <ul>
+      <li>"Reverse Engineering Junior" — Moscow 2018</li>
+      <li>"Prototyping" — Russia finals 2019</li>
+      <li>"Reverse Engineering" — Russia finals 2020</li>
+      <li>"Additive Manufacturing" — Moscow 2020</li>
+      <li>"Additive Manufacturing and Reverse Engineering" — Yekaterinburg 2022</li>
+      <li>"Reverse Engineering" — Russia finals, St. Petersburg 2023</li>
+      <li>"Individual implant manufacturing" — Moscow 2024</li>
+    </ul>
+  </details>
+
+
+<!-- ===== Publications ===== -->
+<details id="publications">
+  <summary><strong>Publications and interviews</strong></summary>
+  <div class="lectures-grid">
+    <figure>
+      <img loading="lazy" src="https://via.placeholder.com/200x120.png?text=Lecture+1" alt="Lecture 1 thumbnail" />
+      <figcaption>Lecture title 1</figcaption>
+    </figure>
+    <figure>
+      <img loading="lazy" src="https://via.placeholder.com/200x120.png?text=Lecture+2" alt="Lecture 2 thumbnail" />
+      <figcaption>Lecture title 2</figcaption>
+    </figure>
+    <figure>
+      <img loading="lazy" src="https://via.placeholder.com/200x120.png?text=Lecture+3" alt="Lecture 3 thumbnail" />
+      <figcaption>Lecture title 3</figcaption>
+    </figure>
+    <figure>
+      <img loading="lazy" src="https://via.placeholder.com/200x120.png?text=Lecture+4" alt="Lecture 4 thumbnail" />
+      <figcaption>Lecture title 4</figcaption>
+    </figure>
+    <figure>
+      <img loading="lazy" src="https://via.placeholder.com/200x120.png?text=Lecture+5" alt="Lecture 5 thumbnail" />
+      <figcaption>Lecture title 5</figcaption>
+    </figure>
+    <figure>
+      <img loading="lazy" src="https://via.placeholder.com/200x120.png?text=Lecture+6" alt="Lecture 6 thumbnail" />
+      <figcaption>Lecture title 6</figcaption>
+    </figure>
+  </div>
+</details>
+
+<details id="portfolio">
+  <summary><strong>Portfolio</strong></summary>
+  <p>Section under development.</p>
+</details>
+
+<details id="interests">
+  <summary><strong>Interests</strong></summary>
+  <p>3D printing, robotics, additive technologies and travel.</p>
+</details>
+
+  <script src="script.js"></script>
+</body>
+</html>
