@@ -2,11 +2,12 @@
 
 This repository contains a simple personal website for Vladimir Ganshin. The
 site is a single page business card with personal information and several
-images. Open `index.html` in any modern web browser to view it.
+images. Open `index.html` or `index_en.html` in any modern web browser to view it.
 
 ## Project structure
 
 - `index.html` – main page of the site with styles and JavaScript inline.
+- `index_en.html` – English translation of the main page.
 - `style.css` – additional stylesheet with color variables and layout rules.
 - `blog_template.html` – basic template for blog posts or articles.
 - `Avatar_Ganshin.jpg`, `avatar.png.png`, `ChatGPT Image 14 апр. 2025 г., 19_42_47.png` – images used on the page.
@@ -23,7 +24,7 @@ images. Open `index.html` in any modern web browser to view it.
 
 ## Usage
 
-To view the page, open `index.html` directly in a web browser. The page does not
+To view the page, open `index.html` or `index_en.html` directly in a web browser. The page does not
 require a web server or additional build tools.
 
 ## License
