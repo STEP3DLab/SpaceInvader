@@ -69,6 +69,13 @@ td {
   font-size: 0.9rem;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+}
+
 .top-nav a {
   text-decoration: none;
   color: inherit;
@@ -88,6 +95,14 @@ td {
 }
 
 .top-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.top-nav a.active {
+  color: #f08080;
+}
+
+.top-nav a.active::after {
   transform: scaleX(1);
 }
 
