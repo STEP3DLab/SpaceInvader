@@ -51,6 +51,10 @@ h1 {
   font-size: 0.9rem;
 }
 
+section {
+  margin-bottom: 1.5rem;
+}
+
 .top-nav a {
   text-decoration: none;
   color: inherit;
@@ -195,6 +199,9 @@ thead th {
   border: 3px solid #f08080;
   padding: 2px;
   box-sizing: border-box;
+  max-width: 200px;
+  border-radius: 0;
+  cursor: pointer;
 }
 
 #storyOverlay {
