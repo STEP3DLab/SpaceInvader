@@ -2,210 +2,79 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Владимир Ганьшин — визитка (древовидная)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Владимир Ганьшин — визитка</title>
+<meta name="description" content="Визитка инженера и преподавателя Владимира Ганьшина">
+<meta property="og:title" content="Владимир Ганьшин">
+<meta property="og:description" content="3D идеи до прототипа">
+<meta property="og:image" content="Avatar_Ganshin.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
- body{font-family:'Montserrat',sans-serif;max-width:960px;margin:0 auto;padding:24px;line-height:1.5;}
- summary{cursor:pointer;font-size:1.1rem;margin:0.5em 0;}
- details details{margin-left:1em;}
- h1{font-size:2rem;margin-top:0;text-align:center;}
- .tagline{font-style:italic;color:#555;margin-top:-0.5em;}
- ul li{transition:background-color 0.3s,transform 0.3s;}
- ul li:hover{background-color:#f0f0f0;transform:scale(1.02);}
- a{transition:color 0.3s,transform 0.3s;}
- a:hover{color:#ff6600;transform:scale(1.05);}
-
-#cube-container{perspective:800px;margin:20px auto;width:220px;position:relative;}
-.cube{position:relative;width:200px;height:200px;transform-style:preserve-3d;transition:transform 0.6s;margin:0 auto;transform:rotateX(-25deg) rotateY(30deg);animation:wobble 3s infinite alternate;}
-.face{position:absolute;width:200px;height:200px;backface-visibility:hidden;}
-.face img{width:100%;height:100%;object-fit:cover;}
-.control{position:absolute;width:0;height:0;border-style:solid;background:transparent;cursor:pointer;padding:0;}
-.control.up{border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:20px solid #333;top:-30px;left:50%;transform:translateX(-50%);}
-.control.down{border-left:15px solid transparent;border-right:15px solid transparent;border-top:20px solid #333;bottom:-30px;left:50%;transform:translateX(-50%);}
-.control.left{border-top:15px solid transparent;border-bottom:15px solid transparent;border-right:20px solid #333;left:-30px;top:50%;transform:translateY(-50%);}
-.control.right{border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:20px solid #333;right:-30px;top:50%;transform:translateY(-50%);}
-@keyframes wobble{from{transform:rotateX(-25deg) rotateY(30deg);}to{transform:rotateX(-25deg) rotateY(35deg);}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Владимир Ганьшин (34&nbsp;года, Москва)</h1>
-<div id="cube-container">
-  <div class="cube">
-    <div class="face front"><img src="Avatar_Ganshin.jpg" alt="Front"></div>
-    <div class="face back"><img src="https://images.unsplash.com/photo-1606851092212-6fb5d3642a5b?auto=format&w=512&h=512&q=80" alt="Back"></div>
-    <div class="face right"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&w=512&h=512&q=80" alt="Right"></div>
-    <div class="face left"><img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&w=512&h=512&q=80" alt="Left"></div>
-    <div class="face top"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&w=512&h=512&q=80" alt="Top"></div>
-    <div class="face bottom"><img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&w=512&h=512&q=80" alt="Bottom"></div>
-  </div>
-  <button class="control up" aria-label="Вверх"></button>
-  <button class="control right" aria-label="Вправо"></button>
-  <button class="control down" aria-label="Вниз"></button>
-  <button class="control left" aria-label="Влево"></button>
-</div>
-<p class="tagline">Делаю будущее осязаемым: от 3D‑идеи до работающего прототипа</p>
-<details open><summary><strong>Контакты</strong></summary>
-
-<ul>
-  <li><strong>Город:</strong> Москва, Россия</li>
-  <li><strong>E-mail:</strong> <a href="mailto:projects.step3d@gmail.com">projects.step3d@gmail.com</a></li>
-  <li><strong>Telegram:</strong> <a href="https://t.me/step_3d_mngr">t.me/step_3d_mngr</a></li>
-</ul>
-
-</details>
-
-<details><summary><strong>Кратко обо мне</strong></summary>
-
-<p>С 2019 года возглавляю технопарк Российского государственного социального университета (РГСУ) и преподаю инженерные дисциплины в филиале РГСУ в Пятигорске.</p>
-<h4>Ключевые факты</h4>
-<ul>
-  <li><strong>25+</strong> прикладных инженерных проектов ежегодно</li>
-  <li><strong>300+</strong> обученных студентов и специалистов</li>
-  <li><strong>10</strong> медалей на национальных и международных чемпионатах</li>
-  <li><strong>1 200+</strong> академических часов авторских курсов</li>
-</ul>
-
-</details>
-
-<details><summary><strong>Текущие должности</strong></summary>
-
-<table>
-  <thead><tr><th>Годы</th><th>Должность</th><th>Организация</th></tr></thead>
-  <tbody>
-    <tr><td>2019 – н.в.</td><td>Руководитель технопарка</td><td>РГСУ, Москва</td></tr>
-    <tr><td>2019 – н.в.</td><td>Преподаватель</td><td>РГСУ, филиал г. Пятигорск</td></tr>
-  </tbody>
-</table>
-
-</details>
-
-<details><summary><strong>Компетенции и инструменты</strong></summary>
-
-<h4>Ключевые навыки</h4>
-<ul>
-  <li>CAD/CAM/CAE‑моделирование</li>
-  <li>Реверсивный инжиниринг</li>
-  <li>Аддитивное производство (FDM, DLP, SLA)</li>
-  <li>Промышленный дизайн и прототипирование</li>
-</ul>
-<h4>Технологический стек</h4>
-<p><strong>CAD:</strong> Inventor Professional · Fusion 360 · T‑FLEX CAD · Geomagic Design X · GOM Inspect<br/>
-<strong>3D‑печать:</strong> Ultimaker Cura · CHITUBOX · Polygon X · Creality Slicer<br/>
-<strong>3D‑сканирование:</strong> Artec Studio · RangeVision ScanCenter<br/>
-<strong>Код:</strong> C++ · Python</p>
-
-</details>
-
-<details><summary><strong>Преподаваемые курсы</strong></summary>
-
-<ul>
-  <li><strong>Промышленный дизайн и инжиниринг</strong> (автор)</li>
-  <li><strong>Инженерный дизайн (САПР)</strong> (автор)</li>
-  <li><strong>Реверсивный инжиниринг и технологии аддитивного производства</strong> (соавтор)</li>
-  <li><strong>AI‑технологии в профессиональной деятельности</strong> (автор)</li>
-  <li><strong>Концепция современного естествознания</strong> (соавтор)</li>
-</ul>
-
-</details>
-
-<details><summary><strong>Образование</strong></summary>
-
-<table>
-  <thead><tr><th>Годы</th><th>Учебное заведение</th><th>Квалификация</th></tr></thead>
-  <tbody>
-    <tr><td>2008‑2012</td><td>МГТУ «Станкин», каф. ИТиТФ</td><td>Бакалавр «Технология, оборудование и автоматизация машиностроительных производств»</td></tr>
-    <tr><td>2012‑2014</td><td>МГТУ «Станкин», каф. ИТиТФ</td><td>Магистр «Конструкторско‑технологическое обеспечение машиностроительных производств»</td></tr>
-    <tr><td>2014‑2018</td><td>МГТУ «Станкин»</td><td>Аспирантура, спец. 05.02.07 «Технология и оборудование механической и физико‑технической обработки»</td></tr>
-  </tbody>
-</table>
-<h4>Повышение квалификации</h4>
-<ul>
-  <li>Инженерный дизайн CAD — Московский Политех</li>
-  <li>Государственное и муниципальное управление — РГСУ</li>
-</ul>
-
-</details>
-
-<details><summary><strong>Педагогический опыт</strong></summary>
-
-<table>
-  <thead><tr><th>Период</th><th>Организация</th><th>Роль</th></tr></thead>
-  <tbody>
-    <tr><td>2014‑2018</td><td>МГТУ «Станкин», Политехнический колледж №42, ЗКНО</td><td>Преподаватель / мастер производственного обучения</td></tr>
-    <tr><td>2018‑н.в.</td><td>Технопарк РГСУ</td><td>Руководитель, преподаватель ДПО</td></tr>
-    <tr><td>2021‑2022</td><td>Школа «Марьина Роща им. В. Ф. Орлова»</td><td>Преподаватель ДО (IT‑классы)</td></tr>
-  </tbody>
-</table>
-
-</details>
-
-<details><summary><strong>Достижения и награды</strong></summary>
-
-<h4>Тренерские успехи</h4>
-<ul>
-  <li>Тренер сборной России (2019‑2021)
-    <ul>
-      <li>🥇 BRICS Skills 2020, Шанхай</li>
-      <li>🥉 WorldSkills 2019, Казань</li>
+<header>
+  <nav id="nav">
+    <a href="#about">Обо мне</a>
+    <a href="#skills">Навыки</a>
+    <a href="#portfolio">Портфолио</a>
+    <a href="#contacts">Контакты</a>
+    <button id="lang-switch" aria-label="Switch language">EN</button>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </nav>
+</header>
+<main>
+<h1>Владимир Ганьшин</h1>
+<p class="tagline"></p>
+<section id="about">
+  <div id="cube-container"></div>
+  <details open>
+    <summary><strong>Контакты</strong></summary>
+    <ul id="contacts">
+      <li><strong>Город:</strong> Москва, Россия</li>
+      <li><strong>E-mail:</strong> <a href="mailto:projects.step3d@gmail.com">projects.step3d@gmail.com</a></li>
+      <li><strong>Telegram:</strong> <a href="https://t.me/step_3d_mngr">t.me/step_3d_mngr</a></li>
     </ul>
-  </li>
-  <li>Подготовил 4 чемпионов России (WorldSkills 2018‑2021)</li>
-</ul>
-<h4>Личные награды</h4>
-<ul>
-  <li>🥈 Серебро — Межрегиональный чемпионат «Реверсивный инжиниринг», Оренбург 2025</li>
-  <li>🥉 Бронза — Финал Чемпионата высоких технологий, Великий Новгород 2023</li>
-</ul>
-<h4>Команда «Дезинтегратор»</h4>
-<ul><li>TOP 16 «Битвы роботов» (100 + кг) — 2024‑2023</li></ul>
-
-</details>
-
-<details><summary><strong>Экспертная деятельность</strong></summary>
-
-<ul>
-  <li>«Реверсивный инжиниринг Junior» — Москва 2018</li>
-  <li>«Прототипирование» — финал России 2019</li>
-  <li>«Реверсивный инжиниринг» — финал России 2020</li>
-  <li>«Аддитивное производство» — Москва 2020</li>
-  <li>«Аддитивное производство и реверсивный инжиниринг» — Екатеринбург 2022</li>
-  <li>«Реверсивный инжиниринг» — финал России, Санкт‑Петербург 2023</li>
-  <li>«Изготовление индивидуальных имплантов» — Москва 2024</li>
-</ul>
-
-</details>
-
-<details><summary><strong>Публикации и интервью</strong></summary>
-
-<ul>
-  <li>Лекции: <a href="https://www.youtube.com/watch?v=yxN1yO_NDyM">видео</a>, <a href="https://example.com/ganjin-methodology.pptx">презентация</a></li>
-  <li>Интервью: <a href="https://www.ucheba.ru/for-specialists/events/2442">Учёба.ру</a>, <a href="https://www.youtube.com/watch?v=iHqL_-ksCC0">YouTube</a></li>
-</ul>
-
-</details>
-
-<details><summary><strong>Портфолио проектов</strong></summary>
-
-<ul><li>Композиционный обвес для Kawasaki Puccetti Racing (с Umatex)</li></ul>
-
-</details>
-
-<details><summary><strong>Личные интересы</strong></summary>
-
-<ul><li>Шахматы — чемпион РГСУ среди сотрудников (2023)</li></ul>
-
-</details>
-
-<script>
-const cube=document.querySelector('.cube');
-let rotX=-25,rotY=30;
-document.querySelector('.control.up').addEventListener('click',()=>{rotX+=90;stopAnim();update();});
-document.querySelector('.control.down').addEventListener('click',()=>{rotX-=90;stopAnim();update();});
-document.querySelector('.control.left').addEventListener('click',()=>{rotY-=90;stopAnim();update();});
-document.querySelector('.control.right').addEventListener('click',()=>{rotY+=90;stopAnim();update();});
-function stopAnim(){cube.style.animation='none';}
-function update(){cube.style.transform=`rotateX(${rotX}deg) rotateY(${rotY}deg)`;}
-</script>
-
+  </details>
+  <details>
+    <summary><strong>Кратко обо мне</strong></summary>
+    <p>С 2019 года возглавляю технопарк РГСУ и преподаю инженерные дисциплины.</p>
+  </details>
+</section>
+<section id="skills">
+  <h2>Навыки</h2>
+  <p><strong>CAD/CAM/CAE-моделирование</strong></p>
+  <progress value="80" max="100"></progress>
+  <p><strong>Аддитивное производство</strong></p>
+  <progress value="75" max="100"></progress>
+  <p><strong>Реверсивный инжиниринг</strong></p>
+  <progress value="70" max="100"></progress>
+</section>
+<section id="portfolio">
+  <h2>Портфолио</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&w=400&q=80" loading="lazy" alt="Project 1">
+    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&w=400&q=80" loading="lazy" alt="Project 2">
+    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&w=400&q=80" loading="lazy" alt="Project 3">
+  </div>
+</section>
+<section id="testimonials">
+  <h2>Отзывы</h2>
+  <blockquote>«Отличный преподаватель!»</blockquote>
+</section>
+<section>
+  <h2>Форма обратной связи</h2>
+  <form action="mailto:projects.step3d@gmail.com" method="post" enctype="text/plain">
+    <label>Ваше имя<br><input type="text" name="name" required></label><br>
+    <label>Email<br><input type="email" name="email" required></label><br>
+    <label>Сообщение<br><textarea name="message" rows="4" required></textarea></label><br>
+    <button type="submit">Отправить</button>
+  </form>
+</section>
+</main>
+<footer>
+  <button id="back-to-top">Наверх</button>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
