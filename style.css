@@ -1,8 +1,13 @@
 :root {
+  /* colors */
   --black: #000;
   --white: #fff;
   --gray-400: #666;
   --gray-050: #e6e6e6;
+
+  /* layout */
+  --content-max-width: 70rem;
+  --page-padding: 32px 24px;
 }
 
 /* ===== базовый layout ===== */
@@ -23,9 +28,9 @@ body {
 }
 
 body {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: var(--page-padding);
 }
 
 /* ===== типографика ===== */
@@ -40,6 +45,19 @@ h1 {
   color: var(--gray-400);
   font-size: 0.95rem;
   margin-bottom: 1.2em;
+}
+
+h1,
+h4,
+summary {
+  line-height: 1.3;
+}
+
+p,
+li,
+th,
+td {
+  line-height: 1.5;
 }
 
 /* ===== мини-навигация ===== */
@@ -110,7 +128,7 @@ details[open] summary::after {
 
 /* анимация раскрытия */
 details[open] > *:not(summary) {
-  animation: fade 0.25s ease;
+  animation: fade 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes fade {
@@ -153,6 +171,20 @@ table {
   border-collapse: collapse;
   margin: 0.5em 0;
   font-size: 0.9rem;
+}
+
+.period-separator {
+  border: 0;
+  border-top: 1px solid var(--gray-050);
+  margin: 0.5em 0;
+}
+
+@media (max-width: 600px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 th,
