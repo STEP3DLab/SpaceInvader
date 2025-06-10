@@ -25,3 +25,7 @@ images. Open `index.html` in any modern web browser to view it.
 
 To view the page, open `index.html` directly in a web browser. The page does not
 require a web server or additional build tools.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
