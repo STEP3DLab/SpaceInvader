@@ -234,11 +234,31 @@
       align-items: center;
       z-index: 1000;
     }
-    #storyOverlay img {
-      max-width: 90%;
-      max-height: 90%;
-    }
-  </style>
+  #storyOverlay img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .lectures-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    margin-top: 0.5em;
+  }
+  .lectures-grid figure {
+    margin: 0;
+    text-align: center;
+  }
+  .lectures-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  .lectures-grid figcaption {
+    margin-top: 0.25em;
+    font-size: 0.9rem;
+  }
+</style>
 </head>
 
 <body itemscope itemtype="https://schema.org/Person">
@@ -429,8 +449,37 @@
     </ul>
   </details>
 
-  <!-- ===== Публикации ===== -->
-  <details id="publications">
-    <summary><strong>Публикации и интервью</strong></summary>
-    <ul>
-      <li>Лекции: <a href="https://www.youtube.com/watch?v=yxN1yO_NDyM">видео</a>, <a href="https://example.com
+
+<!-- ===== Публикации ===== -->
+<details id="publications">
+  <summary><strong>Публикации и интервью</strong></summary>
+  <div class="lectures-grid">
+    <figure>
+      <img src="https://via.placeholder.com/200x120.png?text=Лекция+1" alt="Лекция 1" />
+      <figcaption>Название лекции 1</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200x120.png?text=Лекция+2" alt="Лекция 2" />
+      <figcaption>Название лекции 2</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200x120.png?text=Лекция+3" alt="Лекция 3" />
+      <figcaption>Название лекции 3</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200x120.png?text=Лекция+4" alt="Лекция 4" />
+      <figcaption>Название лекции 4</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200x120.png?text=Лекция+5" alt="Лекция 5" />
+      <figcaption>Название лекции 5</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200x120.png?text=Лекция+6" alt="Лекция 6" />
+      <figcaption>Название лекции 6</figcaption>
+    </figure>
+  </div>
+</details>
+
+</body>
+</html>
