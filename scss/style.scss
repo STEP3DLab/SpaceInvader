@@ -2,6 +2,9 @@
 @use 'core/mixins';
 @use 'core/a11y';
 @use 'core/themes';
+@use 'components/scroll-timeline';
+@use 'components/lottie';
+@use 'core/lang-switch';
 @use 'components/card';
 @use 'components/animations';
 @use 'layout/grid';
