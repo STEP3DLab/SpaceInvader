@@ -25,9 +25,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.0/build/player/lottie.min.js"></script>
 </head>
 <body itemscope itemtype="https://schema.org/Person">
-<header>
+<canvas id="bgParticles"></canvas>
+<div id="preloader"><svg viewBox="0 0 24 24"><path d="M12 1L15 9H9L12 1Z"/></svg></div>
+<header id="glHeader">
   <h1 itemprop="name">Владимир Ганьшин</h1>
   <lottie-player id="avatar" src="assets/lottie/avatar.json" loop style="max-width:200px;cursor:pointer;" aria-label="Аватар Владимира Ганьшина"></lottie-player>
   <p class="tagline" data-cms="tagline"></p>
@@ -47,28 +50,5 @@
     <button id="langToggle" aria-label="Сменить язык">RU / EN</button>
   </nav>
 </header>
-<div id="storyOverlay" aria-hidden="true" data-alt="Фото из сториз Владимира Ганьшина">
-  <button id="closeOverlay" class="overlay-close" aria-label="Закрыть галерею">Закрыть</button>
-  <div class="story-track" id="storyTrack"></div>
-</div>
-<details id="about" data-cms="about"></details>
-<details id="positions" data-cms="positions"></details>
-<details id="skills" data-cms="skills"></details>
-<details id="education" data-cms="education"></details>
-<details id="experience" data-cms="experience"></details>
-<details id="awards" data-cms="awards"></details>
-<details id="expert" data-cms="expert"></details>
-<details id="publications" data-cms="publications"></details>
-<details id="portfolio" data-cms="portfolio"></details>
-<details id="interests" data-cms="interests"></details>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@2/dist/lottie-player.js"></script>
-<script type="module" defer src="scripts/cms.js"></script>
-<script type="module" defer src="scripts/lang-toggle.js"></script>
-<script type="module" defer src="scripts/lottie-init.js"></script>
-<script type="module" defer src="scripts/interactions.js"></script>
-<script type="module" defer src="scripts/seo-meta.js"></script>
-<script type="module" defer src="scripts/theme-toggle.js"></script>
-<script src="scripts/polyfills/scroll-timeline-fallback.js" defer></script>
-<script type="module" defer src="scripts/register-sw.js"></script>
 </body>
 </html>

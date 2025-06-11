@@ -5,7 +5,6 @@
   "main": "script.js",
   "scripts": {
     "test": "playwright test",
-    "build:cms": "mkdir -p dist/content/ru dist/content/en && npx json-minify content/ru/profile.json > dist/content/ru/profile.json && npx json-minify content/en/profile.json > dist/content/en/profile.json"
   },
   "keywords": [],
   "author": "",

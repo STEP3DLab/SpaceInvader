@@ -7,7 +7,13 @@
 @use 'core/lang-switch';
 @use 'components/card';
 @use 'components/animations';
+@use 'components/lottie';
+@use 'components/stories';
+@use 'components/counter';
+@use 'components/glint';
+@use 'components/preloader';
 @use 'layout/grid';
+@use 'layout/background';
 
 /* ===== базовый layout ===== */
 * {
@@ -30,6 +36,10 @@ body {
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: var(--page-padding);
+}
+
+#glHeader {
+  height: 100vh;
 }
 
 /* ===== типографика ===== */
