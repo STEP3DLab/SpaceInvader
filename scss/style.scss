@@ -1,104 +1,7 @@
-@charset "UTF-8";
-:root {
-  /* colors */
-  --black: #000;
-  --white: #fff;
-  --gray-400: #666;
-  --gray-050: #e6e6e6;
-  /* layout */
-  --content-max-width: 70rem;
-  --page-padding: 32px 24px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1em;
-  list-style: none;
-  padding-left: 0;
-  margin: 0.5em 0;
-}
-@media (min-width: 640px) {
-  .cards {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-}
-
-.card {
-  border: 1px solid var(--gray-050);
-  border-radius: 4px;
-  padding: 0.5em;
-  font-size: 0.9rem;
-}
-.card strong {
-  display: block;
-  margin-bottom: 0.25em;
-}
-
-.lectures-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
-  margin-top: 0.5em;
-}
-@media (min-width: 992px) {
-  .lectures-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.lectures-grid figure {
-  margin: 0;
-  text-align: center;
-}
-
-.lectures-grid img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
-
-.lectures-grid figcaption {
-  margin-top: 0.25em;
-  font-size: 0.9rem;
-}
-
-.tech-list {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 0.5em;
-}
-
-.tech-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  margin-bottom: 0.25em;
-}
-
-.tech-list img.icon {
-  width: 24px;
-  height: 24px;
-}
-
-.about-video {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16/9;
-  max-width: 480px;
-  display: block;
-  margin: 0 auto;
-}
-@media (min-width: 640px) {
-  .about-video {
-    max-width: 600px;
-  }
-}
-@media (min-width: 992px) {
-  .about-video {
-    max-width: 720px;
-  }
-}
+@use 'core/variables';
+@use 'core/mixins';
+@use 'components/card';
+@use 'layout/grid';
 
 /* ===== базовый layout ===== */
 * {
@@ -109,7 +12,7 @@
 
 html,
 body {
-  font-family: "Montserrat Variable", "Montserrat", sans-serif;
+  font-family: 'Montserrat Variable', 'Montserrat', sans-serif;
   font-weight: 300;
   background: var(--white);
   color: var(--black);
@@ -173,7 +76,7 @@ td {
 }
 
 .top-nav a::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: -2px;
@@ -222,13 +125,13 @@ summary::-webkit-details-marker {
 }
 
 summary::after {
-  content: "+";
+  content: '+';
   margin-left: auto;
   transition: transform 0.2s;
 }
 
 details[open] summary::after {
-  content: "−";
+  content: '−';
 }
 
 details[open] > *:not(summary) {
@@ -245,6 +148,7 @@ details[open] > *:not(summary) {
     transform: translateY(0);
   }
 }
+
 /* ===== списки и цифры ===== */
 ul {
   margin: 0.5em 0 0.5em 1.2em;
@@ -289,6 +193,7 @@ table {
     white-space: nowrap;
   }
 }
+
 th,
 td {
   padding: 0.4em 0.6em;
@@ -323,6 +228,7 @@ thead th {
     display: none;
   }
 }
+
 /* ===== story styles ===== */
 #avatar {
   border: 3px solid #f08080;

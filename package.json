@@ -1,0 +1,18 @@
+{
+  "name": "spaceinvader",
+  "version": "1.0.0",
+  "description": "This repository contains a simple personal website for Vladimir Ganshin. The site is a single page business card with personal information and several images. Open `index.html` or `index_en.html` in any modern web browser to view it.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.89.2"
+  }
+}

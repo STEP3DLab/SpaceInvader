@@ -1,0 +1,63 @@
+@use '../core/mixins' as *;
+
+.lectures-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  margin-top: 0.5em;
+
+  @include respond(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.lectures-grid figure {
+  margin: 0;
+  text-align: center;
+}
+
+.lectures-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.lectures-grid figcaption {
+  margin-top: 0.25em;
+  font-size: 0.9rem;
+}
+
+.tech-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0.5em;
+}
+
+.tech-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.tech-list img.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.about-video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  max-width: 480px;
+  display: block;
+  margin: 0 auto;
+
+  @include respond(sm) {
+    max-width: 600px;
+  }
+
+  @include respond(md) {
+    max-width: 720px;
+  }
+}
