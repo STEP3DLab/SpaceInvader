@@ -4,7 +4,8 @@
   "description": "This repository contains a simple personal website for Vladimir Ganshin. The site is a single page business card with personal information and several images. Open `index.html` or `index_en.html` in any modern web browser to view it.",
   "main": "script.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "build:cms": "mkdir -p dist/content/ru dist/content/en && npx json-minify content/ru/profile.json > dist/content/ru/profile.json && npx json-minify content/en/profile.json > dist/content/en/profile.json"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,8 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.41.1",
-    "sharp": "^0.33.3"
+    "sharp": "^0.33.3",
+    "json-minify": "^1.0.0",
+    "axe-core": "^4.8.0"
   }
 }

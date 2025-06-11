@@ -1,0 +1,23 @@
+name: Export Statamic
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: node tools/export-statamic.mjs
+      - name: Commit export
+        run: |
+          git config user.name github-actions
+          git config user.email actions@github.com
+          git add statamic
+          git commit -m "Export content" || echo "No changes"
+          git push origin HEAD:statamic-deploy
