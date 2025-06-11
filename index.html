@@ -22,14 +22,14 @@
 <body itemscope itemtype="https://schema.org/Person">
 <header>
   <h1 itemprop="name">Владимир Ганьшин</h1>
-  <img loading="lazy" id="avatar" src="Avatar_Ganshin.jpg" alt="Аватар преподавателя Владимира Ганьшина" itemprop="image" style="max-width:200px;border-radius:0;cursor:pointer;" />
+  <img loading="lazy" id="avatar" src="Avatar_Ganshin.jpg" alt="Аватар преподавателя Владимира Ганьшина" itemprop="image" style="max-width:200px;border-radius:0;cursor:pointer;" role="button" tabindex="0" aria-label="Открыть галерею сториз" />
   <p class="tagline" itemprop="description">Москва, 34 года, эксперт в области промышленного дизайна и инжиниринга</p>
   <p><a href="mailto:ganjshin.vk@example.com" itemprop="email">ganjshin.vk@example.com</a><br />
   <a href="tel:+79123456789" itemprop="telephone">+7 912 345-67-89</a><br />
   Telegram / LinkedIn: <a href="https://t.me/yourhandle" itemprop="sameAs">t.me/yourhandle</a> | <a href="https://linkedin.com/in/ganjshin" itemprop="sameAs">linkedin.com/in/ganjshin</a></p>
 
   <!-- 5. навигация-якоря -->
-  <nav class="top-nav sticky">
+  <nav class="top-nav sticky" role="navigation">
     <a href="#about">Обо мне</a>
     <a href="#positions">Должности</a>
     <a href="#skills">Навыки</a>
@@ -43,7 +43,7 @@
   </nav>
 </header>
   <div id="storyOverlay" aria-hidden="true" data-alt="Фото из сториз Владимира Ганьшина">
-    <button id="closeOverlay" class="overlay-close">Закрыть</button>
+    <button id="closeOverlay" class="overlay-close" aria-label="Закрыть галерею">Закрыть</button>
     <div class="story-track" id="storyTrack"></div>
   </div>
 
