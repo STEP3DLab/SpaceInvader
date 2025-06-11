@@ -15,6 +15,8 @@ jobs:
       - run: npm ci
       - run: npx eslint . || true
       - run: npm test
+      - name: a11y-audit
+        run: npx playwright test tests/accessibility.spec.ts
       - uses: actions/upload-pages-artifact@v1
         with:
           path: .
