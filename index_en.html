@@ -39,8 +39,9 @@
     <a href="#interests">Interests</a>
   </nav>
 </header>
-  <div id="storyOverlay">
-    <img loading="lazy" id="storyImg" src="" alt="Story photo of Vladimir Ganshin" />
+  <div id="storyOverlay" aria-hidden="true" data-alt="Story photo of Vladimir Ganshin">
+    <button id="closeOverlay" class="overlay-close">Close</button>
+    <div class="story-track" id="storyTrack"></div>
   </div>
 
   <!-- ===== Contacts ===== -->
@@ -218,7 +219,7 @@
     <summary><strong>Expertная деятельность</strong></summary>
     <div class="carousel" id="expertCarousel">
       <button class="prev" id="expertPrev" aria-label="Previous photo">&#10094;</button>
-      <img loading="lazy" id="expertImg" src="" alt="Expert photo" />
+      <div class="carousel-track" id="expertTrack"></div>
       <button class="next" id="expertNext" aria-label="Next photo">&#10095;</button>
     </div>
     <ul>
@@ -274,6 +275,6 @@
   <p>3D printing, robotics, additive technologies and travel.</p>
 </details>
 
-  <script src="script.js"></script>
+  <script type="module" src="scripts/interactions.js"></script>
 </body>
 </html>

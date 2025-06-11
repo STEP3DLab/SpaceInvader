@@ -42,9 +42,9 @@
     <a href="#interests">Интересы</a>
   </nav>
 </header>
-  <div id="storyOverlay" aria-hidden="true">
+  <div id="storyOverlay" aria-hidden="true" data-alt="Фото из сториз Владимира Ганьшина">
     <button id="closeOverlay" class="overlay-close">Закрыть</button>
-    <img loading="lazy" id="storyImg" src="" alt="Фото из сториз Владимира Ганьшина" />
+    <div class="story-track" id="storyTrack"></div>
   </div>
 
   <details id="about">
@@ -202,7 +202,7 @@
     <summary><strong>Экспертная деятельность</strong></summary>
     <div class="carousel" id="expertCarousel">
       <button class="prev" id="expertPrev" aria-label="Предыдущее фото">&#10094;</button>
-      <img loading="lazy" id="expertImg" src="" alt="Экспертное фото" />
+      <div class="carousel-track" id="expertTrack"></div>
       <button class="next" id="expertNext" aria-label="Следующее фото">&#10095;</button>
     </div>
     <ul>
@@ -258,6 +258,6 @@
   <p>3D-печать, робототехника, аддитивные технологии и путешествия.</p>
 </details>
 
-  <script src="script.js"></script>
+  <script type="module" src="scripts/interactions.js"></script>
 </body>
 </html>
