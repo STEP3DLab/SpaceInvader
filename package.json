@@ -4,7 +4,8 @@
   "description": "This repository contains a simple personal website for Vladimir Ganshin. The site is a single page business card with personal information and several images. Open `index.html` or `index_en.html` in any modern web browser to view it.",
   "main": "script.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "game-dev": "parcel game.html"
   },
   "keywords": [],
   "author": "",

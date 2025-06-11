@@ -1,0 +1,16 @@
+.medal {
+  width: 32px;
+  height: 32px;
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-touch-callout: none) {
+    .medal {
+      animation: shine 3s linear infinite;
+    }
+    @keyframes shine {
+      from { filter: brightness(1); }
+      to { filter: brightness(1.3); }
+    }
+  }
+}

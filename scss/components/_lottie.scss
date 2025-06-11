@@ -1,0 +1,17 @@
+.skill-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.cta[data-lottie] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-icon, .cta[data-lottie] {
+    animation: none !important;
+  }
+}

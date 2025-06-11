@@ -29,10 +29,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.0/build/player/lottie.min.js"></script>
 </head>
 
 <body itemscope itemtype="https://schema.org/Person">
-<header>
+<canvas id="bgParticles"></canvas>
+<div id="preloader"><svg viewBox="0 0 24 24"><path d="M12 1L15 9H9L12 1Z"/></svg></div>
+<header id="glHeader">
   <h1 itemprop="name">Владимир Ганьшин</h1>
   <picture id="avatarPicture">
     <source type="image/avif" srcset="Avatar_Ganshin.avif" />
@@ -59,6 +62,7 @@
     <button id="themeToggle" aria-label="Переключить тему">🌓</button>
   </nav>
 </header>
+<script type="module" src="webgl-cover/WebGLCover.js"></script>
   <div id="storyOverlay" aria-hidden="true" data-alt="Фото из сториз Владимира Ганьшина">
     <button id="closeOverlay" class="overlay-close" aria-label="Закрыть галерею">Закрыть</button>
     <div class="story-track" id="storyTrack"></div>
@@ -72,10 +76,10 @@
     <p>С 2019 года возглавляю технопарк Российского государственного социального университета (РГСУ) и преподаю инженерные дисциплины в филиале РГСУ в Пятигорске.</p>
     <h4>Ключевые факты</h4>
     <ul>
-      <li><strong>25+</strong> прикладных инженерных проектов ежегодно</li>
-      <li><strong>300+</strong> обученных студентов и специалистов</li>
-      <li><strong>10</strong> медалей на национальных и международных чемпионатах</li>
-      <li><strong>1 200+</strong> академических часов авторских курсов</li>
+      <li><strong data-counter="25">25+</strong> прикладных инженерных проектов ежегодно</li>
+      <li><strong data-counter="300">300+</strong> обученных студентов и специалистов</li>
+      <li><strong data-counter="10">10</strong> медалей на национальных и международных чемпионатах</li>
+      <li><strong data-counter="1200">1 200+</strong> академических часов авторских курсов</li>
     </ul>
   </details>
 
@@ -109,28 +113,28 @@
     <h4>Технологический стек</h4>
     <p><strong>CAD:</strong></p>
     <ul class="tech-list">
-      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/autodesk.svg" alt="Логотип Inventor Professional" /> Inventor Professional</li>
-      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/autodesk.svg" alt="Логотип Fusion 360" /> Fusion&nbsp;360</li>
-      <li><img loading="lazy" class="icon" src="icons/tflex.svg" alt="Логотип T-FLEX CAD" /> T‑FLEX&nbsp;CAD</li>
-      <li><img loading="lazy" class="icon" src="icons/geomagic.svg" alt="Логотип Geomagic Design X" /> Geomagic&nbsp;Design&nbsp;X</li>
-      <li><img loading="lazy" class="icon" src="icons/gominspect.svg" alt="Логотип GOM Inspect" /> GOM&nbsp;Inspect</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип Inventor Professional"></div> Inventor Professional</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип Fusion 360"></div> Fusion&nbsp;360</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип T-FLEX CAD"></div> T‑FLEX&nbsp;CAD</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип Geomagic Design X"></div> Geomagic&nbsp;Design&nbsp;X</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип GOM Inspect"></div> GOM&nbsp;Inspect</li>
     </ul>
     <p><strong>3D‑печать:</strong></p>
     <ul class="tech-list">
-      <li><img loading="lazy" class="icon" src="icons/ultimaker.svg" alt="Логотип Ultimaker Cura" /> Ultimaker&nbsp;Cura</li>
-      <li><img loading="lazy" class="icon" src="icons/chitubox.svg" alt="Логотип CHITUBOX" /> CHITUBOX</li>
-      <li><img loading="lazy" class="icon" src="icons/polygonx.svg" alt="Логотип Polygon X" /> Polygon&nbsp;X</li>
-      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/creality.svg" alt="Логотип Creality Slicer" /> Creality&nbsp;Slicer</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип Ultimaker Cura"></div> Ultimaker&nbsp;Cura</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип CHITUBOX"></div> CHITUBOX</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип Polygon X"></div> Polygon&nbsp;X</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип Creality Slicer"></div> Creality&nbsp;Slicer</li>
     </ul>
     <p><strong>3D‑сканирование:</strong></p>
     <ul class="tech-list">
-      <li><img loading="lazy" class="icon" src="icons/artec.svg" alt="Логотип Artec Studio" /> Artec&nbsp;Studio</li>
-      <li><img loading="lazy" class="icon" src="icons/rangevision.svg" alt="Логотип RangeVision ScanCenter" /> RangeVision&nbsp;ScanCenter</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип Artec Studio"></div> Artec&nbsp;Studio</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип RangeVision ScanCenter"></div> RangeVision&nbsp;ScanCenter</li>
     </ul>
     <p><strong>Код:</strong></p>
     <ul class="tech-list">
-      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/cplusplus.svg" alt="Логотип C++" /> C++</li>
-      <li><img loading="lazy" class="icon" src="https://raw.githubusercontent.com/simple-icons/simple-icons/master/icons/python.svg" alt="Логотип Python" /> Python</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип C++"></div> C++</li>
+      <li><div class="skill-icon" data-lottie="cad.json" aria-label="Логотип Python"></div> Python</li>
     </ul>
   </details>
 
@@ -196,6 +200,15 @@
   <!-- ===== Награды и достижения ===== -->
   <details id="awards">
     <summary><strong>Достижения и награды</strong></summary>
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <filter id="glint">
+          <feSpecularLighting in="SourceGraphic" surfaceScale="5" specularConstant="1" specularExponent="20" lighting-color="white">
+            <fePointLight x="0" y="0" z="30"/>
+          </feSpecularLighting>
+        </filter>
+      </defs>
+    </svg>
     <h4>Тренерские успехи</h4>
     <ul>
       <li>Тренер сборной России (2019‑2021)
@@ -207,8 +220,8 @@
     </ul>
     <h4>Личные награды</h4>
     <ul>
-      <li>🥈 Серебро — Межрегиональный чемпионат «Реверсивный инжиниринг», Оренбург 2025</li>
-      <li>🥉 Бронза — Финал Чемпионата высоких технологий, Великий Новгород 2023</li>
+      <li><svg class="medal" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle" font-size="18" filter="url(#glint)">🥈</text></svg> Серебро — Межрегиональный чемпионат «Реверсивный инжиниринг», Оренбург 2025</li>
+      <li><svg class="medal" viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle" font-size="18" filter="url(#glint)">🥉</text></svg> Бронза — Финал Чемпионата высоких технологий, Великий Новгород 2023</li>
     </ul>
     <h4>Команда «Дезинтегратор»</h4>
     <ul><li>TOP 16 «Битвы роботов» (100 + кг) — 2023‑2024</li></ul>
@@ -263,7 +276,10 @@
       <figcaption>Название лекции 6</figcaption>
     </figure>
   </div>
+  <button class="cta" id="openStories" data-lottie="cad.json">Сториз проектов</button>
 </details>
+
+<dialog id="storiesLightbox"></dialog>
 
 <details id="portfolio">
   <summary><strong>Портфолио</strong></summary>
@@ -276,6 +292,12 @@
 </details>
 
   <script type="module" defer src="scripts/interactions.js"></script>
+  <script type="module" defer src="scripts/lottie-init.js"></script>
+  <script type="module" defer src="scripts/bg-gradient.js"></script>
+  <script type="module" defer src="scripts/stories.js"></script>
+  <script type="module" defer src="scripts/counter.js"></script>
+  <script type="module" defer src="scripts/glint.js"></script>
+  <script type="module" defer src="scripts/preloader.js"></script>
   <script type="module" defer src="scripts/seo-meta.js"></script>
   <script type="module" defer src="scripts/theme-toggle.js"></script>
   <script type="module" defer src="scripts/register-sw.js"></script>
