@@ -1,0 +1,26 @@
+@use '../core/mixins' as *;
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1em;
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5em 0;
+
+  @include respond(sm) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+.card {
+  border: 1px solid var(--gray-050);
+  border-radius: 4px;
+  padding: 0.5em;
+  font-size: 0.9rem;
+
+  strong {
+    display: block;
+    margin-bottom: 0.25em;
+  }
+}
