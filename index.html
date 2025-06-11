@@ -2,16 +2,28 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Владимир Ганьшин — визитка</title>
 
   <!-- 8. Open Graph / Twitter Card -->
+  <meta name="description" content="Визитка Владимира Ганьшина — эксперта по промышленному дизайну и инжинирингу" />
+  <link rel="canonical" href="https://ganshin.dev/" />
+  <link rel="alternate" href="https://ganshin.dev/" hreflang="ru" />
+  <link rel="alternate" href="https://ganshin.dev/en" hreflang="en" />
   <meta property="og:title" content="Владимир Ганьшин — визитка" />
-  <meta property="og:description" content="Москва, 34 года, эксперт в области промышленного дизайна и инжиниринга" />
-  <meta property="og:type" content="profile" />
+  <meta property="og:description" content="Визитка Владимира Ганьшина" />
+  <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:image" content="Avatar_Ganshin.jpg" />
-  <meta name="description" content="Краткое описание визитки" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Владимир Ганьшин — визитка" />
+  <meta name="twitter:description" content="Визитка Владимира Ганьшина" />
+  <meta name="twitter:image" content="Avatar_Ganshin.jpg" />
+
+  <script id="breadcrumbsJson" type="application/ld+json"></script>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" as="style" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <style id="critical">body{font-family:'Montserrat',sans-serif;background:var(--color-bg);color:var(--color-text);} .top-nav{display:flex;gap:1.25rem;}</style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +34,11 @@
 <body itemscope itemtype="https://schema.org/Person">
 <header>
   <h1 itemprop="name">Владимир Ганьшин</h1>
-  <img loading="lazy" id="avatar" src="Avatar_Ganshin.jpg" alt="Аватар преподавателя Владимира Ганьшина" itemprop="image" style="max-width:200px;border-radius:0;cursor:pointer;" role="button" tabindex="0" aria-label="Открыть галерею сториз" />
+  <picture id="avatarPicture">
+    <source type="image/avif" srcset="Avatar_Ganshin.avif" />
+    <source type="image/webp" srcset="Avatar_Ganshin.webp" />
+    <img loading="lazy" id="avatar" src="Avatar_Ganshin.jpg" alt="Аватар преподавателя Владимира Ганьшина" itemprop="image" style="max-width:200px;border-radius:0;cursor:pointer;" role="button" tabindex="0" aria-label="Открыть галерею сториз" />
+  </picture>
   <p class="tagline" itemprop="description">Москва, 34 года, эксперт в области промышленного дизайна и инжиниринга</p>
   <p><a href="mailto:ganjshin.vk@example.com" itemprop="email">ganjshin.vk@example.com</a><br />
   <a href="tel:+79123456789" itemprop="telephone">+7 912 345-67-89</a><br />
@@ -40,6 +56,7 @@
     <a href="#publications">Публикации</a>
     <a href="#portfolio">Портфолио</a>
     <a href="#interests">Интересы</a>
+    <button id="themeToggle" aria-label="Переключить тему">🌓</button>
   </nav>
 </header>
   <div id="storyOverlay" aria-hidden="true" data-alt="Фото из сториз Владимира Ганьшина">
@@ -258,6 +275,9 @@
   <p>3D-печать, робототехника, аддитивные технологии и путешествия.</p>
 </details>
 
-  <script type="module" src="scripts/interactions.js"></script>
+  <script type="module" defer src="scripts/interactions.js"></script>
+  <script type="module" defer src="scripts/seo-meta.js"></script>
+  <script type="module" defer src="scripts/theme-toggle.js"></script>
+  <script type="module" defer src="scripts/register-sw.js"></script>
 </body>
 </html>
