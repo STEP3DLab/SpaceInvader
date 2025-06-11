@@ -1,0 +1,16 @@
+:root {
+  --color-bg: var(--white);
+  --color-text: var(--black);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #000;
+    --color-text: #fff;
+  }
+}
+
+[data-theme='dark'] {
+  --color-bg: #000;
+  --color-text: #fff;
+}

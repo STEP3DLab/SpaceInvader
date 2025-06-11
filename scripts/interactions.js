@@ -18,11 +18,21 @@ if (storyTrack) {
   stories.forEach(src => {
     const slide = document.createElement('div');
     slide.className = 'story-slide';
+    const picture = document.createElement('picture');
+    const avif = document.createElement('source');
+    avif.type = 'image/avif';
+    avif.srcset = src + '&format=avif';
+    const webp = document.createElement('source');
+    webp.type = 'image/webp';
+    webp.srcset = src + '&format=webp';
     const img = document.createElement('img');
     img.loading = 'lazy';
     img.src = src;
     img.alt = altText;
-    slide.appendChild(img);
+    picture.appendChild(avif);
+    picture.appendChild(webp);
+    picture.appendChild(img);
+    slide.appendChild(picture);
     storyTrack.appendChild(slide);
   });
 

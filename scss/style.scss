@@ -1,6 +1,7 @@
 @use 'core/variables';
 @use 'core/mixins';
 @use 'core/a11y';
+@use 'core/themes';
 @use 'components/card';
 @use 'components/animations';
 @use 'layout/grid';
@@ -16,8 +17,8 @@ html,
 body {
   font-family: 'Montserrat Variable', 'Montserrat', sans-serif;
   font-weight: 300;
-  background: var(--white);
-  color: var(--black);
+  background: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
   scroll-behavior: smooth;
 }
@@ -68,7 +69,7 @@ td {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--white);
+  background: var(--color-bg);
 }
 
 .top-nav a {
