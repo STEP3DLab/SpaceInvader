@@ -1,0 +1,19 @@
+{
+  "tagline": "",
+  "contacts": {
+    "email": "",
+    "phone": "",
+    "telegram": "",
+    "linkedin": ""
+  },
+  "about": {"title": "", "video": "", "videoLabel": "", "description": "", "factsTitle": "", "facts": []},
+  "positions": {"title": "", "items": []},
+  "skills": {"title": "", "keyTitle": "", "key": [], "stackTitle": "", "cad": [], "print": [], "scan": [], "code": []},
+  "education": {"title": "", "degrees": [], "upgradeTitle": "", "upgrade": []},
+  "experience": {"title": "", "positions": [], "coursesTitle": "", "courses": []},
+  "awards": {"title": "", "coachTitle": "", "coach": [], "coachSummary": "", "personalTitle": "", "personal": [], "teamTitle": "", "team": []},
+  "expert": {"title": "", "list": []},
+  "publications": {"title": "", "items": []},
+  "portfolio": {"title": "", "items": []},
+  "interests": {"title": "", "text": ""}
+}
